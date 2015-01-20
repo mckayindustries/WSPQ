@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="WSPQ.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="printQuotaManagerUrl" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://foo.bar</Value>
+    </Setting>
+    <Setting Name="checkQuotaPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">checkquota.php</Value>
+    </Setting>
+    <Setting Name="updateQuotaPath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">updatequota.php</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
