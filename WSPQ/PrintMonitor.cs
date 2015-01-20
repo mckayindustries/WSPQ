@@ -17,7 +17,7 @@ namespace WSPQ
         private int printCount = 0;
         private int deleteCount = 0;
         private HttpWrapper http;
-        private PrinterWatcher watcher;
+        //private PrinterWatcher watcher;
         
         public void MonitorAllPrinters()
         {
@@ -33,15 +33,15 @@ namespace WSPQ
             Console.WriteLine(".Start");
             PrinterMonitorComponent pMon = new PrinterMonitorComponent();
             http = new HttpWrapper();
-            watcher = new PrinterWatcher();
+            //watcher = new PrinterWatcher();
 
             foreach (string printer in printers)
             {
                 pMon.AddPrinter(printer);
-                watcher.AddPrinter(printer, pMon.get_PrinterInformation(printer).ShareName);
+                //watcher.AddPrinter(printer, pMon.get_PrinterInformation(printer).ShareName);
             }
 
-            watcher.Start();
+            //watcher.Start();
             pMon.JobAdded += this.OnJobUpdate;
             pMon.JobWritten += this.OnJobUpdate;
             pMon.JobDeleted += this.OnJobDelete;
@@ -56,7 +56,7 @@ namespace WSPQ
             log.WriteLine();
             log.Close();
             Console.WriteLine(".Ended");
-            watcher.Stop();
+            //watcher.Stop();
             pMon.Disconnect();
         }
 
@@ -108,12 +108,12 @@ namespace WSPQ
             lock (logSyncLock) { log.WriteLine(output); }
 
             int pages = j.TotalPages > 0 ? j.TotalPages : 1; // Assume 1 page when spooler says 0
-            if (!j.Paused)
+            /*if (!j.Paused)
             {
                 j.Paused = true;
                 if (!watcher.IsPrinterReady(j.PrinterName))
                     EnqueueJob(j);
-            }
+            }*/
 
             if (!http.CanPrint(j.UserName, pages * j.Copies))
                 DeleteJob(j);
@@ -140,10 +140,10 @@ namespace WSPQ
             http.HasPrinted(j.JobId, j.UserName, j.PrinterName, j.Document, j.PagesPrinted);
         }
 
-        private void EnqueueJob(PrintJob j)
+        /*private void EnqueueJob(PrintJob j)
         {
 
-        }
+        }*/
 
         private void DeleteJob(PrintJob j)
         {

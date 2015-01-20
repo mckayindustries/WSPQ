@@ -55,7 +55,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HttpWrapper.cs" />
-    <Compile Include="PrinterWatcher.cs" />
     <Compile Include="PrintMonitor.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -66,7 +65,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="SNMPWrapper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
