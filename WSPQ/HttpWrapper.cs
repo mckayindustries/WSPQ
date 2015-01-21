@@ -53,9 +53,6 @@ namespace WSPQ
                     return false;
             }
             return true;
-            
-            /*return !Get(String.Format("{0}checkquota.php?user={1}&pagecount={2}",
-                BASE_URL, user, pageCount)).Equals("ERR_INSUFFICIENT_QUOTA");*/
         }
 
         public void HasPrinted(int id, string user, string printer, string document, int pageCount)
@@ -64,8 +61,6 @@ namespace WSPQ
 
             GetAndForget(String.Format("{0}/{1}?id={2}&user={3}&printer={4}&doc={5}&printedcount={6}&chk={7}",
                 baseUrl, updateQuotaPath, id, user, HttpUtility.UrlEncode(printer), HttpUtility.UrlEncode(document), pageCount, checksum));
-            /*GetAndForget(String.Format("{0}?action=commit&id={1}&user={2}&printer={3}&doc={4}&printedcount={5}",
-                BASE_URL, id, user, HttpUtility.UrlEncode(printer), HttpUtility.UrlEncode(document), pageCount));*/
         }
 
         private static string ShortMD5Hash(string input)
