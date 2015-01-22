@@ -54,28 +54,29 @@ namespace WSPQ
                     if (p.awaitingJobs.Count == 0) // Queue is empty
                         continue;
 
-                    if (!p.UpdateStatusAndPageCount())
+                    if (!p.UpdateStatusAndPageCount()) // Cannot update printer, probably can't reach it
                     {
-                        Console.WriteLine(String.Format("Printer {0} is likely offline ?", p.name));
+                        Console.WriteLine(String.Format("|{0} is likely offline ?", p.name));
                         continue;
                     }
-                    Console.WriteLine(String.Format("Printer {0} is {1}[{2}] with {3} job ({4}/{5})", p.name, p.isReady ? "ready" : "busy", p.status, p.awaitingJobs.Count, p.runningJobId, p.isSpittingPaper ? "spit" : ""));
 
-                    if (p.isReady && !p.hasRunningJob) // Nothing running and printer is ready, let's print
+                    Console.WriteLine(String.Format("|{0} : {1} - {2} job ({3}/{4})", p.name, p.status.ToString(), p.awaitingJobs.Count, p.runningJobId, p.isSpittingPaper ? "spit" : ""));
+
+                    if (p.status == SnmpStatus.IDLE && !p.hasRunningJob) // Nothing running and printer is ready, let's print
                     {
                         p.RunFirstAwaitingJob();
-                        Console.WriteLine(String.Format("Printer {0} : RunJob ({1})", p.name, p.runningJobId));
+                        Console.WriteLine(String.Format("|{0} : RunJob ({1})", p.name, p.runningJobId));
                     }
 
-                    if (p.hasRunningJob && !p.isReady) // Job is running and printer is doing something, aknowledge printing
+                    if (p.status == SnmpStatus.PRINTING && p.hasRunningJob) // Job is running and printer is doing something, aknowledge printing
                     {
                         //Console.WriteLine(String.Format("Printer {0} : spitPaper ({1})", p.name, p.runningJobId));
                         p.isSpittingPaper = true;
                     }
 
-                    if (p.hasRunningJob && p.isReady && p.isSpittingPaper) // Printer was running our job, spat papper and now is ready
+                    if (p.status == SnmpStatus.IDLE && p.hasRunningJob && p.isSpittingPaper) // Printer was running our job, spat papper and now is ready
                     {
-                        Console.WriteLine(String.Format("Printer {0} : Done ({1})", p.name, p.runningJobId));
+                        Console.WriteLine(String.Format("|{0} : Done ({1})", p.name, p.runningJobId));
                         p.isSpittingPaper = false;
 
                         PrintJobEndArgs e = new PrintJobEndArgs();
@@ -115,16 +116,15 @@ namespace WSPQ
         public string name;
         public string address;
         private SimpleSnmp snmp;
-        public int status;
-        public bool isReady = true;
+        public SnmpStatus status = SnmpStatus.UNKNOWN;
 
         public Dictionary<int, PrintJob> awaitingJobs;
         public PrintJob currentPrintJob;
+        public int runningJobId = 0;
+        public bool hasRunningJob = false;
+        public bool isSpittingPaper = false;
         public int pageCount;
         public int pageCountBefore;
-        public bool hasRunningJob = false;
-        public int runningJobId = 0;
-        public bool isSpittingPaper = false;
 
         public WatchedPrinter(string name, string address)
         {
@@ -173,10 +173,7 @@ namespace WSPQ
                 {
                     string oid = kv.Key.ToString();
                     if (oid == STATUS_OID)
-                    {
-                        status = int.Parse(kv.Value.ToString());
-                        isReady = status == SnmpStatus.IDLE;
-                    }
+                        status = (SnmpStatus)Enum.Parse(typeof(SnmpStatus), kv.Value.ToString());
                     else if (oid == PAGECOUNT_OID)
                         pageCount = int.Parse(kv.Value.ToString());
                 }
@@ -193,12 +190,12 @@ namespace WSPQ
         public int pageCount;
     }
 
-    class SnmpStatus
+    enum SnmpStatus
     {
-        public static int OTHER = 1;
-        public static int UNKNOWN = 2;
-        public static int IDLE = 3;
-        public static int PRINTING = 4;
-        public static int WARMUP = 5;
+        OTHER = 1,
+        UNKNOWN = 2,
+        IDLE = 3,
+        PRINTING = 4,
+        WARMUP = 5
     }
 }
