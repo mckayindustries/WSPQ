@@ -77,10 +77,6 @@ namespace WSPQ
                 return;
             }
 
-            
-
-            int pages = j.TotalPages > 0 ? j.TotalPages : 1; // Assume 1 page when spooler says 0
-
             if (watcher.EnqueueAwaitingJob(j))
             {
                 Console.WriteLine(String.Format("Printer {0} : Added job {1}", j.PrinterName, j.JobId));
@@ -91,6 +87,8 @@ namespace WSPQ
                     e.EventTime, e.EventType, j.JobId, j.PrinterName, j.UserName,
                     j.Document, j.Copies, j.PagesPrinted, j.TotalPages);
             lock (logSyncLock) { log.WriteLine(output); }
+
+            int pages = j.TotalPages > 0 ? j.TotalPages : 1; // Assume 1 page when spooler says 0
             if (!http.CanPrint(j.UserName, pages * j.Copies))
                 DeleteJob(j);
         }
