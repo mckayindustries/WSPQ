@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HttpWrapper.cs" />
+    <Compile Include="PrinterWatcher.cs" />
     <Compile Include="PrintMonitor.cs">
       <SubType>Code</SubType>
     </Compile>
