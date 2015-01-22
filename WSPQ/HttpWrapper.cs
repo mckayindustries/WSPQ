@@ -19,12 +19,14 @@ namespace WSPQ
         private string baseUrl;
         private string checkQuotaPath;
         private string updateQuotaPath;
+        private string lastUser = "";
+        private int lastPageCount = 0;
+        private bool lastResult = false;
 
         public HttpWrapper()
         {
             jsonDecode = new JavaScriptSerializer();
             baseUrl = Properties.Settings.Default.printQuotaManagerUrl;
-            Console.WriteLine(baseUrl);
             
             if (baseUrl.LastIndexOf('/') == baseUrl.Length - 1)
                 baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
@@ -34,6 +36,9 @@ namespace WSPQ
 
         public bool CanPrint(string user, int pageCount)
         {
+            if (lastUser == user && lastPageCount == pageCount)
+                return lastResult;
+            
             string rawData = Get(String.Format("{0}/{1}?user={2}&pagecount={3}",
                 baseUrl, checkQuotaPath, user, pageCount));
             JsonMessage json = null;
@@ -47,12 +52,14 @@ namespace WSPQ
                 catch (Exception) { }
             }
 
+            bool result = true;
             if (json != null)
             {
                 if (json.status == "success" && json.data.can_print == false)
-                    return false;
+                    result = false;
             }
-            return true;
+            lastResult = result;
+            return result;
         }
 
         public void HasPrinted(int id, string user, string printer, string document, int pageCount)
@@ -82,7 +89,6 @@ namespace WSPQ
 
         public string Get(string url)
         {
-            Console.WriteLine(url);
             HttpWebRequest wReq = (HttpWebRequest)WebRequest.Create(url);
             wReq.Timeout = TIMEOUT;
             WebResponse wRes;
