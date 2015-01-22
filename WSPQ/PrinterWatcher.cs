@@ -192,7 +192,7 @@ namespace WSPQ
 
     enum SnmpStatus
     {
-        OTHER = 1,
+        ERROR = 1,
         UNKNOWN = 2,
         IDLE = 3,
         PRINTING = 4,
