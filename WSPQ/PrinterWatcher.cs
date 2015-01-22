@@ -138,6 +138,7 @@ namespace WSPQ
         {
             if (!awaitingJobs.ContainsKey(job.JobId))
             {
+                job.Paused = true;
                 awaitingJobs.Add(job.JobId, job);
                 return true;
             }

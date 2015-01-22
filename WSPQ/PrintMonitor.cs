@@ -80,7 +80,6 @@ namespace WSPQ
             if (watcher.EnqueueAwaitingJob(j))
             {
                 Console.WriteLine(String.Format("Printer {0} : Added job {1}", j.PrinterName, j.JobId));
-                j.Paused = true;
             }
 
             string output = String.Format("{0} {1} :{2}: {3} [{4}] {5} {6}*[{7}/{8}]",
