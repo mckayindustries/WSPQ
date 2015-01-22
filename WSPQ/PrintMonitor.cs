@@ -110,6 +110,7 @@ namespace WSPQ
                     j.Document, j.Copies, j.PagesPrinted, j.TotalPages);
             lock (logSyncLock) { log.WriteLine(output); }
 
+            ++printCount;
             http.HasPrinted(j.JobId, j.UserName, j.PrinterName, j.Document, j.PagesPrinted);
         }
 
