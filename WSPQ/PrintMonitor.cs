@@ -77,10 +77,7 @@ namespace WSPQ
                 return;
             }
 
-            string output = String.Format("{0} {1} :{2}: {3} [{4}] {5} {6}*[{7}/{8}]",
-                    e.EventTime, e.EventType, j.JobId, j.PrinterName, j.UserName,
-                    j.Document, j.Copies, j.PagesPrinted, j.TotalPages);
-            lock (logSyncLock) { log.WriteLine(output); }
+            
 
             int pages = j.TotalPages > 0 ? j.TotalPages : 1; // Assume 1 page when spooler says 0
 
@@ -90,6 +87,10 @@ namespace WSPQ
                 j.Paused = true;
             }
 
+            string output = String.Format("{0} {1} :{2}: {3} [{4}] {5} {6}*[{7}/{8}]",
+                    e.EventTime, e.EventType, j.JobId, j.PrinterName, j.UserName,
+                    j.Document, j.Copies, j.PagesPrinted, j.TotalPages);
+            lock (logSyncLock) { log.WriteLine(output); }
             if (!http.CanPrint(j.UserName, pages * j.Copies))
                 DeleteJob(j);
         }
