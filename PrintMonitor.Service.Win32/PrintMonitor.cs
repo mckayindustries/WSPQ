@@ -18,6 +18,7 @@ namespace WSPQ
         private int deleteCount = 0;
         private HttpWrapper http;
         private PrinterWatcher watcher;
+        private List<PrintJob> processedJobs = new List<PrintJob>();
 
         public void MonitorAllPrinters()
         {
@@ -67,17 +68,43 @@ namespace WSPQ
             pMon.Disconnect();
         }
 
+        private void OnJobAdded(object sender, PrintJobEventArgs e)
+        {
+            Console.WriteLine("OnJobAdded");
+            OnJobUpdate(sender, e);
+        }
+
         private void OnJobUpdate(object sender, PrintJobEventArgs e)
         {
             PrintJob j = e.PrintJob;
             // Ignore unknown print jobs (shouldn't happen)
-            if (j == null)
+            if (j == null || j.Deleted || j.Deleting)
             {
                 lock (logSyncLock) { log.WriteLine("{0} {1}", e.EventTime, e.EventType); }
                 return;
             }
 
-            if (watcher.EnqueueAwaitingJob(j))
+            Console.WriteLine("OnJobUpdate");
+            int pages = j.TotalPages > 0 ? j.TotalPages : 1; // Assume 1 page when spooler says 0
+            if (!processedJobs.Contains(j))
+            {
+                j.Paused = true;
+                processedJobs.Add(j);
+
+                if (!http.CanPrint(j.UserName, pages * j.Copies))
+                {
+                    j.NotifyUserName = j.UserName;
+                    Console.WriteLine(String.Format("{0} has exceeded assigned quota", j.UserName));
+                    DeleteJob(j);
+                    return;
+                }
+                else
+                {
+                    j.Released = true;
+                }
+            }
+
+            if (j.Released && watcher.EnqueueAwaitingJob(j))
             {
                 Console.WriteLine(String.Format("Printer {0} : Added job {1}", j.PrinterName, j.JobId));
             }
@@ -86,10 +113,6 @@ namespace WSPQ
                     e.EventTime, e.EventType, j.JobId, j.PrinterName, j.UserName,
                     j.Document, j.Copies, j.PagesPrinted, j.TotalPages);
             lock (logSyncLock) { log.WriteLine(output); }
-
-            int pages = j.TotalPages > 0 ? j.TotalPages : 1; // Assume 1 page when spooler says 0
-            if (!http.CanPrint(j.UserName, pages * j.Copies))
-                DeleteJob(j);
         }
 
         private void OnJobDelete(object sender, PrintJobEventArgs e)
@@ -137,10 +160,16 @@ namespace WSPQ
         {
             // Remove unmonitorable printers
             String[] ignoredPrinters = {
+                "Adobe PDF",
+                "CutePDF Writer",
+                "Fax",
+                "Microsoft Print to PDF",
+                "Send To OneNote 2013",
+                "Send To OneNote 2016",
+                "WebEx Document Loader",
                 "PDFCreator",
                 "Microsoft XPS Document Writer",
-                "Fax",
-                "Envoyer à OneNote 2010"
+                "Fax"
             };
             List<String> monitoredPrinters = new List<String>();
 

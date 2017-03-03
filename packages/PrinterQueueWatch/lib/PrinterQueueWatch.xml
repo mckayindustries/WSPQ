@@ -1,0 +1,4099 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+PrinterQueueWatch
+</name>
+</assembly>
+<members>
+<member name="P:PrinterQueueWatch.PrintDomain.Name">
+	<summary>
+ The name of the print domain
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	17/02/2006	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrintDomain.Description">
+	<summary>
+ The description of the print domain
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:PrinterQueueWatch.PrintDomain.Comment">
+	<summary>
+ The comment associated with this print domain
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="T:PrinterQueueWatch.PrintDomain">
+ -----------------------------------------------------------------------------
+ Project	 : PrinterQueueWatch
+ Class	 : PrintDomain
+ 
+ -----------------------------------------------------------------------------
+ <summary>
+	</summary>
+	<remarks>
+	</remarks>
+	<example>Lists all the print domains on all the printer providors visible from this process
+ <code>
+       Dim Providors As New PrintProvidorCollection
+        Me.ListBox1.Items.Clear()
+        For ps As Integer = 0 To Providors.Count - 1
+            Me.ListBox1.Items.Add( Providors(ps).Name )
+            For ds As Integer = 0 To  Providors(ps).PrintDomains.Count - 1
+                Me.ListBox1.Items.Add( Providors(ps).PrintDomains(ds).Name )
+            Next
+        Next
+ 
+ </code>
+	</example>
+</member><member name="P:PrinterQueueWatch.PrintDomainCollection.Item(System.Int32)">
+	<summary>
+ The Item property returns a single <see cref="T:PrinterQueueWatch.PrintDomain">print domain</see> from a print domain collection.
+ </summary>
+	<param name="index">The zero-based item position</param>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:PrinterQueueWatch.PrintDomainCollection.Remove(PrinterQueueWatch.PrintDomain)">
+	<summary>
+ Removes a print domain from this collection
+ </summary>
+	<param name="obj"></param>
+	<remarks></remarks>
+</member><member name="M:PrinterQueueWatch.PrintDomainCollection.#ctor(System.String)">
+ -----------------------------------------------------------------------------
+ <summary>
+ Creates a list of all the print domains visible from this machine for the named providor
+ </summary>
+	<param name="ProvidorName">The name of the PrintProvidor to get the list of print domains for</param>
+	<remarks>
+	</remarks>
+</member><member name="T:PrinterQueueWatch.PrintDomainCollection">
+ -----------------------------------------------------------------------------
+ Project	 : PrinterQueueWatch
+ Class	 : PrintDomainCollection
+ 
+ -----------------------------------------------------------------------------
+ <summary>
+ A collection of PrintDomain objects for a given print providor
+ </summary>
+	<remarks>
+	</remarks>
+	<example>Lists all the print domains on all the printer providors visible from this process
+ <code>
+       Dim Providors As New PrintProvidorCollection
+        Me.ListBox1.Items.Clear()
+        For ps As Integer = 0 To Providors.Count - 1
+            Me.ListBox1.Items.Add( Providors(ps).Name )
+            For ds As Integer = 0 To  Providors(ps).PrintDomains.Count - 1
+                Me.ListBox1.Items.Add( Providors(ps).PrintDomains(ds).Name )
+            Next
+        Next
+ 
+ </code>
+	</example>
+</member><member name="P:PrinterQueueWatch.PrintMonitor.Name">
+ -----------------------------------------------------------------------------
+ <summary>
+ The name of the print monitor
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrintMonitor.Environment">
+ -----------------------------------------------------------------------------
+ <summary>
+ The environment for which the print monitor was created
+ </summary>
+	<value></value>
+	<remarks>
+ For example, "Windows NT x86", "Windows NT R4000", "Windows NT Alpha_AXP", or "Windows 4.0"
+ </remarks>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrintMonitor.DLLName">
+ -----------------------------------------------------------------------------
+ <summary>
+ The dynamic link library that implements this print monitor
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="M:PrinterQueueWatch.PrintMonitor.ToString">
+ -----------------------------------------------------------------------------
+ <summary>
+ Text description of this print monitor instance
+ </summary>
+	<returns></returns>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="T:PrinterQueueWatch.PrintMonitor">
+ -----------------------------------------------------------------------------
+ Project	 : PrinterQueueWatch
+ Class	 : PrintMonitor
+ 
+ -----------------------------------------------------------------------------
+ <summary>
+ Class wrapper for the windows API calls and constants relating to print monitors
+ </summary>
+	<remarks>
+	</remarks>
+	<example>Lists teh details of all the print monitors on the current server
+ <code>
+        Dim server As New PrintServer
+        Me.ListBox1.Items.Clear()
+        For ms As Integer = 0 To server.PrintMonitors.Count - 1
+            Me.ListBox1.Items.Add( server.PrintMonitors(ms).Name )
+        Next
+ </code>
+	</example>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="M:PrinterQueueWatch.PrintMonitors.#ctor">
+ -----------------------------------------------------------------------------
+ <summary>
+ Gets a collection of print monitors on the current server
+ </summary>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="M:PrinterQueueWatch.PrintMonitors.#ctor(System.String)">
+ -----------------------------------------------------------------------------
+ <summary>
+ Gets a collection of print monitors on the named server
+ </summary>
+	<param name="Servername">The name of the server to get the print monitors from</param>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="T:PrinterQueueWatch.PrintMonitors">
+ -----------------------------------------------------------------------------
+ Project	 : PrinterQueueWatch
+ Class	 : PrintMonitors
+ 
+ -----------------------------------------------------------------------------
+ <summary>
+ A collection of print monitors on a server
+ </summary>
+	<remarks>
+	</remarks>
+	<example>Lists the details of all the print monitors on the current server
+ <code>
+        Dim server As New PrintServer
+        Me.ListBox1.Items.Clear()
+        For ms As Integer = 0 To server.PrintMonitors.Count - 1
+            Me.ListBox1.Items.Add( server.PrintMonitors(ms).Name )
+        Next
+ </code>
+	</example>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="T:PrinterQueueWatch.PrintJobEventArgs.PrintJobEventTypes">
+ -----------------------------------------------------------------------------
+ <summary>
+	</summary>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrintJobEventArgs.PrintJob">
+ -----------------------------------------------------------------------------
+ <summary>
+ The print job for which this event occured
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrintJobEventArgs.EventTime">
+ -----------------------------------------------------------------------------
+ <summary>
+ The date and time at which the print job event occured
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrintJobEventArgs.EventType">
+ -----------------------------------------------------------------------------
+ <summary>
+ The type of job event that occured
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="M:PrinterQueueWatch.PrintJobEventArgs.Dispose">
+ -----------------------------------------------------------------------------
+ <summary>
+ Frees up any system resources used by this job event notification
+ </summary>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="T:PrinterQueueWatch.PrintJobEventArgs">
+ -----------------------------------------------------------------------------
+ Project	 : PrinterQueueWatch
+ Class	 : PrintJobEventArgs
+ 
+ -----------------------------------------------------------------------------
+ <summary>
+ Class wrapper for the event arguments used in the change events 
+ relating to individual jobs in a printer queue..
+ </summary>
+	<remarks>
+	</remarks>
+	<example>Prints the user name of a job when it is added 
+ <code>
+   Private WithEvents pmon As New PrinterMonitorComponent
+   pmon.AddPrinter("Microsoft Office Document Image Writer")
+   pmon.AddPrinter("HP Laserjet 5")
+ 
+    Private Sub pmon_JobAdded(ByVal sender As Object, ByVal e As System.EventArgs) Handles pmon.JobAdded
+    With CType(e, PrintJobEventArgs)
+        Trace.WriteLine( .PrintJob.Username )
+     End With
+  End Sub
+ </code>
+	</example>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrintProcessor.Name">
+ -----------------------------------------------------------------------------
+ <summary>
+ The name of the print server
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrintProcessor.ServerName">
+ -----------------------------------------------------------------------------
+ <summary>
+ The server name on which the print processor is installed
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrintProcessor.DataTypes">
+ -----------------------------------------------------------------------------
+ <summary>
+ The collection of data types that this print processor can process
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="M:PrinterQueueWatch.PrintProcessor.#ctor(System.String,System.String)">
+ -----------------------------------------------------------------------------
+ <summary>
+	</summary>
+	<param name="ServerName">The name of the server that this processor is installed on</param>
+	<param name="PrintProcessorname">The name of this print processor</param>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="T:PrinterQueueWatch.PrintProcessor">
+ -----------------------------------------------------------------------------
+ Project	 : PrinterQueueWatch
+ Class	 : PrintProcessor
+ 
+ -----------------------------------------------------------------------------
+ <summary>
+ Class wrapper for the properties relating to the printer processors ..
+ </summary>
+	<remarks>
+	</remarks>
+	<example>
+		<code>
+        Dim server As New PrintServer
+ 
+        Dim Processor As PrintProcessor
+        Me.ListBox1.Items.Clear()
+        For ps As Integer = 0 To server.PrintProcessors.Count - 1
+            Me.ListBox1.Items.Add( server.PrintProcessors(ps).Name )
+        Next
+ </code>
+	</example>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="M:PrinterQueueWatch.PrintProcessorCollection.#ctor">
+ -----------------------------------------------------------------------------
+ <summary>
+ Creates a collection of print processors installed on the current print server
+ </summary>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="M:PrinterQueueWatch.PrintProcessorCollection.#ctor(System.String)">
+ -----------------------------------------------------------------------------
+ <summary>
+ Creates a collection of print processors installed on the named print server
+ </summary>
+	<param name="Servername">The name of the print server to return the print processors for</param>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="T:PrinterQueueWatch.PrintProcessorCollection">
+ -----------------------------------------------------------------------------
+ Project	 : PrinterQueueWatch
+ Class	 : PrintProcessorCollection
+ 
+ -----------------------------------------------------------------------------
+ <summary>
+ The collection of print processors installed on a print server
+ </summary>
+	<remarks>
+	</remarks>
+	<example>
+		<code>
+        Dim server As New PrintServer
+ 
+        Me.ListBox1.Items.Clear()
+        For ps As Integer = 0 To server.PrintProcessors.Count - 1
+            Me.ListBox1.Items.Add( server.PrintProcessors(ps).Name )
+        Next
+ </code>
+	</example>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrintServer.PrintMonitors">
+	<summary>
+ The print monitors installed on this print server
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+	<example> Lists the print monitors on the current machine in a list box
+ <code>
+ 
+    Dim server As New PrintServer
+    Me.ListBox1.Items.Clear()
+    For ms As Integer = 0 To server.PrintMonitors.Count - 1
+        Me.ListBox1.Items.Add( server.PrintMonitors(ms).Name )
+    Next
+ 
+ </code>
+	</example>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+</member><member name="P:PrinterQueueWatch.PrintServer.PrintProcessors">
+ -----------------------------------------------------------------------------
+ <summary>
+ The print processors installed on this print server
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrintServer.PrinterDrivers">
+ -----------------------------------------------------------------------------
+ <summary>
+ The printer drivers installed on this print server
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrintServer.Ports">
+ -----------------------------------------------------------------------------
+ <summary>
+ The print ports installed on this print server
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrintServer.Printers">
+ -----------------------------------------------------------------------------
+ <summary>
+ The print devices installed on this print server
+ </summary>
+	<value></value>
+	<remarks>
+ These can be both physical printers and also software print devices
+ </remarks>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrintServer.ServerName">
+	<summary>
+ The name of the server for which this component returns printer information
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks>
+ Set this value to blank to return information about the current server
+ </remarks>
+</member><member name="M:PrinterQueueWatch.PrintServer.#ctor(System.String)">
+ -----------------------------------------------------------------------------
+ <summary>
+ Gets print server information for the named server
+ </summary>
+	<param name="Servername">The server to query information for</param>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="M:PrinterQueueWatch.PrintServer.#ctor">
+ -----------------------------------------------------------------------------
+ <summary>
+ Gets print server information for the current machine
+ </summary>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="T:PrinterQueueWatch.PrintServer">
+ -----------------------------------------------------------------------------
+ Project	 : PrinterQueueWatch
+ Class	 : PrintServer
+ 
+ -----------------------------------------------------------------------------
+ <summary>
+ Class with properties pertaining to a print server
+ </summary>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.Port.Servername">
+	<summary>
+ The name of the server on which this port resides
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+</member><member name="P:PrinterQueueWatch.Port.Name">
+	<summary>
+ The name supported printer port (for example, "LPT1:").
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+</member><member name="P:PrinterQueueWatch.Port.MonitorName">
+ -----------------------------------------------------------------------------
+ <summary>
+ Identifies an installed monitor (for example, "PJL monitor"). 
+ </summary>
+	<value></value>
+	<remarks>
+ This may be empty if no port monitor associated with this port
+ </remarks>
+</member><member name="P:PrinterQueueWatch.Port.Description">
+	<summary>
+ More detailed description of this printer port
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+</member><member name="P:PrinterQueueWatch.Port.Read">
+	<summary>
+ The port supports read functionality
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+</member><member name="P:PrinterQueueWatch.Port.Write">
+	<summary>
+ The port supports write operation
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+</member><member name="P:PrinterQueueWatch.Port.Redirected">
+	<summary>
+ True if the port is redirected
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+</member><member name="P:PrinterQueueWatch.Port.NetAttached">
+	<summary>
+ True if the port is network attached
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+</member><member name="T:PrinterQueueWatch.Port">
+ -----------------------------------------------------------------------------
+ Project	 : PrinterQueueWatch
+ Class	 : Port
+ 
+ -----------------------------------------------------------------------------
+ <summary>
+ Represents information about the port to which a printer is attached
+ </summary>
+	<remarks>
+	</remarks>
+	<example>Lists all the ports on the current printer
+ <code>
+        Dim server As New PrintServer
+        ListBox1.Items.Clear()
+        For ps As Integer = 0 To server.Ports.Count - 1
+            Me.ListBox1.Items.Add(server.Ports(ps).Name)
+        Next
+ </code>
+	</example>
+</member><member name="M:PrinterQueueWatch.PortCollection.#ctor">
+ -----------------------------------------------------------------------------
+ <summary>
+ Returns the ports on the current machine
+ </summary>
+	<remarks>
+ To get the ports of another machine use the overloaded constructor and
+ pass the server name as a reference
+ </remarks>
+	<history>
+ 	[Duncan]	19/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="M:PrinterQueueWatch.PortCollection.#ctor(System.String)">
+ -----------------------------------------------------------------------------
+ <summary>
+ Enumerates the ports on the named server
+ </summary>
+	<param name="Servername">The server to list the ports on</param>
+	<remarks>
+	</remarks>
+	<exception cref="T:System.ComponentModel.Win32Exception">
+ The server does not exist of the user does not have access to it
+ </exception>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="T:PrinterQueueWatch.PortCollection">
+ -----------------------------------------------------------------------------
+ Project	 : PrinterQueueWatch
+ Class	 : PortCollection
+ 
+ -----------------------------------------------------------------------------
+ <summary>
+ A collection of Port objects
+ </summary>
+	<remarks>
+	</remarks>
+	<example>Lists all the ports on the current printer
+ <code>
+        Dim server As New PrintServer
+        ListBox1.Items.Clear()
+        For ps As Integer = 0 To server.Ports.Count - 1
+            Me.ListBox1.Items.Add(server.Ports(ps).Name)
+        Next
+ </code>
+	</example>
+	<history>
+ 	[Duncan]	19/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="F:PrinterQueueWatch.PrinterMonitorComponent.ComponentTraceSwitch">
+ -----------------------------------------------------------------------------
+ <summary>
+ Specifies the level of trace information output by the PrinterMonitorComponent
+ </summary>
+	<remarks>
+ You can alter the trace switch by adding the switch to the application.exe.config
+ </remarks>
+	<history>
+ 	[Duncan]	19/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="F:PrinterQueueWatch.PrinterMonitorComponent.ComponentLocalisationResourceManager">
+ -----------------------------------------------------------------------------
+ <summary>
+ Provides multi-culture support for the component 
+ </summary>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	19/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="T:PrinterQueueWatch.PrinterMonitorComponent.MonitorJobEventInformationLevels">
+ -----------------------------------------------------------------------------
+ <summary>
+ Set to configure how much information is returned with a print job event
+ </summary>
+	<remarks>
+ Typically this should be set to MaximumJobInformation except in cases of
+ very low bandwidth networks
+ </remarks>
+	<history>
+ 	[Duncan]	19/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="E:PrinterQueueWatch.PrinterMonitorComponent.JobAdded">
+ -----------------------------------------------------------------------------
+ <summary>
+ Raised when a job is added to one of the print spool queues being monitored
+ </summary>
+	<remarks>
+	</remarks>
+ -----------------------------------------------------------------------------
+
+</member><member name="E:PrinterQueueWatch.PrinterMonitorComponent.JobDeleted">
+ -----------------------------------------------------------------------------
+ <summary>
+ Raised when a job is removed from one of the print spool queues being monitored
+ </summary>
+	<remarks>
+	</remarks>
+ -----------------------------------------------------------------------------
+
+</member><member name="E:PrinterQueueWatch.PrinterMonitorComponent.JobWritten">
+ -----------------------------------------------------------------------------
+ <summary>
+ Raised when a job is written to on one of the print spool queues being monitored
+ </summary>
+	<remarks>
+ This event is fired when an application writes to the spool file or when a spool
+ file writes to the print device
+ </remarks>
+ -----------------------------------------------------------------------------
+
+</member><member name="E:PrinterQueueWatch.PrinterMonitorComponent.JobSet">
+ -----------------------------------------------------------------------------
+ <summary>
+ Raised when a job's properties are changed in one of the print spool queues being monitored
+ </summary>
+	<remarks>
+ Be careful altering the print job in response to this event as you might get an endless loop
+ </remarks>
+ -----------------------------------------------------------------------------
+
+</member><member name="E:PrinterQueueWatch.PrinterMonitorComponent.PrintJobSpoolfileParsed">
+ -----------------------------------------------------------------------------
+ <summary>
+ Raised when a request to parse a print job spool file completes
+ </summary>
+	<remarks>
+ Spool file parsing is asynchronous and non blocking therefore this event may 
+ occur some time after the request was sent
+ </remarks>
+ -----------------------------------------------------------------------------
+
+</member><member name="E:PrinterQueueWatch.PrinterMonitorComponent.PrinterInformationChanged">
+ -----------------------------------------------------------------------------
+ <summary>
+ Raised when the properties of a printer being monitored are changed
+ </summary>
+	<remarks>
+	</remarks>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterMonitorComponent.Monitoring">
+	<summary>
+ True if the component is monitoring any printers
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:PrinterQueueWatch.PrinterMonitorComponent.DeviceName">
+ -----------------------------------------------------------------------------
+ <summary>
+ Set to the name of the printer to monitor
+ </summary>
+	<value></value>
+	<remarks>
+ This property is for backward compatibility with the component versions which 
+ did not support monitoring multiple printers.  
+ Replaced by AddPrinter
+ </remarks>
+	<exception cref="T:System.ComponentModel.Win32Exception">
+ Thrown when the printer does not exist or the user has no access rights to monitor it
+ </exception>
+	<seealso cref="M:PrinterQueueWatch.PrinterMonitorComponent.AddPrinter(System.String)"/>
+	<seealso cref="M:PrinterQueueWatch.PrinterMonitorComponent.RemovePrinter(System.String)"/>
+	<history>
+ 	[Duncan]	19/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterMonitorComponent.PrintJobs">
+ -----------------------------------------------------------------------------
+ <summary>
+ Retruns the print job collection of the printer being monitored
+ </summary>
+	<value></value>
+	<remarks>
+ If more that one printer is being monitored this will return the print jobs 
+ of the first one added.  Use the overloaded version to get the named print device's print jobs
+ </remarks>
+	<history>
+ 	[Duncan]	19/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterMonitorComponent.PrintJobs(System.String)">
+ -----------------------------------------------------------------------------
+ <summary>
+ Retruns the print job collection of the named printer being monitored
+ </summary>
+	<param name="DeviceName">The name of the printer being monitored that you want to retrieve the print jobs for</param>
+	<value></value>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	19/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterMonitorComponent.PrinterInformation">
+ -----------------------------------------------------------------------------
+ <summary>
+  Returns the printer settings for the printer being monitored
+ </summary>
+	<value></value>
+	<remarks>
+ If more that one printer is being monitored this will return the details 
+ of the first one added.  Use the overloaded version to get the named print device settings
+ </remarks>
+	<history>
+ 	[Duncan]	19/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterMonitorComponent.PrinterInformation(System.String)">
+ -----------------------------------------------------------------------------
+ <summary>
+ Returns the printer settings for the named printer being monitored
+ </summary>
+	<param name="DeviceName">The name of the print device to return the information for</param>
+	<value></value>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	19/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="M:PrinterQueueWatch.PrinterMonitorComponent.AddPrinter(System.String)">
+ -----------------------------------------------------------------------------
+ <summary>
+ Adds the printer to the internal list and starts monitoring it
+ </summary>
+	<param name="DeviceName">The name of the printer to monitor.
+ This can be a UNC name or the name of a printer share
+ </param>
+	<remarks>
+	</remarks>
+	<exception cref="T:System.ComponentModel.Win32Exception">
+ Thrown when the printer does not exist or the user has no access rights to monitor it
+ </exception>
+	<history>
+ 	[Duncan]	19/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="M:PrinterQueueWatch.PrinterMonitorComponent.RemovePrinter(System.String)">
+ -----------------------------------------------------------------------------
+ <summary>
+ Removes a printer from the internal list, stopping monitoring as appropriate
+ </summary>
+	<param name="DeviceName">The name of the printer to remove and stop monitoring</param>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	19/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="M:PrinterQueueWatch.PrinterMonitorComponent.Disconnect">
+ -----------------------------------------------------------------------------
+ <summary>
+ Disconnects from all printers being monitored
+ </summary>
+	<remarks>
+ You should disconnect from all the printers being monitored before exiting 
+ your application to ensure all the resources are released cleanly
+ </remarks>
+	<history>
+ 	[Duncan]	19/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="M:PrinterQueueWatch.PrinterMonitorComponent.RequestSpoolParse(System.String,System.Int32,System.Boolean)">
+ -----------------------------------------------------------------------------
+ <summary>
+ Sent to try and get the print job parsed asynchronously by the
+ SpoolMonitorService (if installed)
+ </summary>
+	<param name="Printername">The printer which is printing the job you want to parse</param>
+	<param name="JobId">The job number of the job you want to parse</param>
+	<param name="GetPageCount">True if you want to get the page count from the spool file</param>
+	<remarks>
+ Parsing the spool file is a slow operation and is undertaken asynchronously
+ </remarks>
+	<seealso cref="E:PrinterQueueWatch.PrinterMonitorComponent.PrintJobSpoolfileParsed"/>
+	<history>
+ 	[Duncan]	19/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterMonitorComponent.MonitorJobAddedEvent">
+ -----------------------------------------------------------------------------
+ <summary>
+ Set to make the component monitor jobs being added to the job queue
+ </summary>
+	<value>True to make the component raise a JobAdded event
+ when a job is added to a printer being monitored
+ </value>
+	<remarks>
+ Selecting only the notifications you want to be informed about can improve performance
+ in low network bandwidth situations
+ </remarks>
+	<history>
+ 	[Duncan]	19/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterMonitorComponent.MonitorJobDeletedEvent">
+ -----------------------------------------------------------------------------
+ <summary>
+ Set to make the component monitor jobs being removed from the job queue
+ </summary>
+	<value>True to make the component raise a JobDeleted event
+ when a job is added to a printer being monitored</value>
+	<remarks>
+ Selecting only the notifications you want to be informed about can improve performance
+ in low network bandwidth situations
+ </remarks>
+	<history>
+ 	[Duncan]	19/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterMonitorComponent.MonitorJobWrittenEvent">
+ -----------------------------------------------------------------------------
+ <summary>
+ Set to make the component monitor jobs being written on the job queue
+ </summary>
+	<value>True to make the component raise a JobWritten event
+ when a job is written to on a printer being monitored</value>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	19/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterMonitorComponent.MonitorJobSetEvent">
+ -----------------------------------------------------------------------------
+ <summary>
+ Set to make the component monitor changes to the jobs on the job queue
+ </summary>
+	<value>True to make the component raise a JobSet event
+ when a job is altered on a printer being monitored</value>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	19/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterMonitorComponent.MonitorPrinterChangeEvent">
+ -----------------------------------------------------------------------------
+ <summary>
+ Set to make the component monitor printer setup change events
+ </summary>
+	<value>True to make the component raise a PrinterInformationChanged event
+ when a printer being monitored has its settings changed</value>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	19/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterMonitorComponent.MonitorJobEventInformationLevel">
+ -----------------------------------------------------------------------------
+ <summary>
+ Set to fine tune the job information required for networks
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	19/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterMonitorComponent.ThreadTimeout">
+ -----------------------------------------------------------------------------
+ <summary>
+ Set to tune the printer watch refresh interval
+ </summary>
+	<value></value>
+	<remarks>
+ This property is obsolete and only included for backward compatibility.
+ It has no effect on the operation of the component
+ </remarks>
+	<history>
+ 	[Duncan]	19/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="T:PrinterQueueWatch.PrinterMonitorComponent">
+ -----------------------------------------------------------------------------
+ Project	 : PrinterQueueWatch
+ Class	 : PrinterMonitorComponent
+ 
+ -----------------------------------------------------------------------------
+ <summary>
+ Top level component to allow plug-in monitoring of the windows print spool
+ for one or more <see cref="T:PrinterQueueWatch.PrinterInformation">printers</see>
+	</summary>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	19/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterEventFlagDecoder.IsInfoComplete">
+	<summary>
+ Returns true if the printer notification message was complete
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:PrinterQueueWatch.PrinterEventFlagDecoder.PrinterAdded">
+	<summary>
+ A printer was added to the server being monitored
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:PrinterQueueWatch.PrinterEventFlagDecoder.PrinterDeleted">
+	<summary>
+ A printer was removed from the server being monitored
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:PrinterQueueWatch.PrinterEventFlagDecoder.PrinterSet">
+	<summary>
+ The settings of a printer on the server being monitored were changed
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:PrinterQueueWatch.PrinterEventFlagDecoder.PrinterConnectionFailed">
+	<summary>
+ A printer connection error occured on the server being monitored
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:PrinterQueueWatch.PrinterEventFlagDecoder.ServerPortAdded">
+	<summary>
+ A new printer port was added to the server being monitored
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:PrinterQueueWatch.PrinterEventFlagDecoder.ServerPortSet">
+	<summary>
+ The settings for one of the ports on the server being monitored changed
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:PrinterQueueWatch.PrinterEventFlagDecoder.ServerPortDeleted">
+	<summary>
+ A port was removed from the server being monitored
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:PrinterQueueWatch.PrinterEventFlagDecoder.ServerFormAdded">
+	<summary>
+ A from was added to the server being monitored
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:PrinterQueueWatch.PrinterEventFlagDecoder.ServerFormDeleted">
+	<summary>
+ A form was removed from the server being monitored
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:PrinterQueueWatch.PrinterEventFlagDecoder.ServerFormSet">
+	<summary>
+ The properties of a form on the server being monitored were changed
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:PrinterQueueWatch.PrinterEventFlagDecoder.ServerProcessorAdded">
+	<summary>
+ A print processor was added to the server being monitored
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:PrinterQueueWatch.PrinterEventFlagDecoder.ServerProcessorDeleted">
+	<summary>
+ A print processor was removed from the printer being monitored
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:PrinterQueueWatch.PrinterEventFlagDecoder.ServerDriverAdded">
+	<summary>
+ A new printer driver was added to the printer being monitored
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:PrinterQueueWatch.PrinterEventFlagDecoder.ServerDriverDeleted">
+	<summary>
+ A printer driver was uninstalled from the server being monitored
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="P:PrinterQueueWatch.PrinterEventFlagDecoder.ServerDriverSet">
+	<summary>
+ The settings for a printer driver installed on the server being monitored were changed
+ </summary>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="T:PrinterQueueWatch.MonitoredPrinters">
+	<summary>
+ A type safe collection of PrinterInformation objects representing 
+ the printers being monitored by any given PrinterMonitorComponent
+ Unique key is Printer.DeviceName
+ </summary>
+	<remarks></remarks>
+</member><member name="P:PrinterQueueWatch.PrinterInformation.ServerName">
+ -----------------------------------------------------------------------------
+ <summary>
+ The name of the server on which this printer is installed
+ </summary>
+	<value></value>
+	<remarks>
+ This value may be blank if the printer is attached to the current machine
+ </remarks>
+	<example>Prints the name of the server that the named printer is installed on
+ <code>
+    Dim pi As New PrinterInformation("Microsoft Office Document Image Writer", SpoolerApiConstantEnumerations.PrinterAccessRights.PRINTER_ALL_ACCESS, True)
+    Trace.WriteLine(pi.ServerName)
+</code>
+	</example>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterInformation.PrinterName">
+ -----------------------------------------------------------------------------
+ <summary>
+ The unique name by which the printer is known
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterInformation.ShareName">
+ -----------------------------------------------------------------------------
+ <summary>
+ identifies the sharepoint for the printer
+ </summary>
+	<value></value>
+	<remarks>
+ This will only be set if the Shared property is set to True
+ </remarks>
+	<example>Prints the name of the share (if any) that the named printer is shared out on
+ <code>
+    Dim pi As New PrinterInformation("Microsoft Office Document Image Writer", SpoolerApiConstantEnumerations.PrinterAccessRights.PRINTER_ALL_ACCESS, True)
+    Trace.WriteLine(pi.ShareName)
+ </code>
+	</example>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterInformation.PortName">
+ -----------------------------------------------------------------------------
+ <summary>
+ The name of the port the printer is connected to
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+	<example>Prints the name of the port that the named printer is installed on
+ <code>
+    Dim pi As New PrinterInformation("Microsoft Office Document Image Writer", SpoolerApiConstantEnumerations.PrinterAccessRights.PRINTER_ALL_ACCESS, True)
+    Trace.WriteLine(pi.PortName)
+ </code>
+	</example>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterInformation.DriverName">
+ -----------------------------------------------------------------------------
+ <summary>
+ The name of the printer driver software used by this printer
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+	<example>Prints the name of the driver that the named printer is using
+ <code>
+    Dim pi As New PrinterInformation("Microsoft Office Document Image Writer", SpoolerApiConstantEnumerations.PrinterAccessRights.PRINTER_ALL_ACCESS, True)
+    Trace.WriteLine(pi.DriverName)
+ </code>
+	</example>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterInformation.Comment">
+ -----------------------------------------------------------------------------
+ <summary>
+ The administrator defined comment for this printer
+ </summary>
+	<value></value>
+	<remarks>
+ This can be useful for giving extra information about a printer to the user
+ </remarks>
+	<example>Changes the comment assigned for this printer
+ <code>
+    Dim pi As New PrinterInformation("Microsoft Office Document Image Writer", SpoolerApiConstantEnumerations.PrinterAccessRights.PRINTER_ALL_ACCESS, True)
+    pi.Comment = "Monitored by PUMA"
+ </code>
+	</example>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterInformation.Location">
+ -----------------------------------------------------------------------------
+ <summary>
+ The administrator defined location for this printer
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+	<example>Prints the location that the named printer is installed on
+ <code>
+    Dim pi As New PrinterInformation("Microsoft Office Document Image Writer", SpoolerApiConstantEnumerations.PrinterAccessRights.PRINTER_ALL_ACCESS, True)
+    Trace.WriteLine(pi.Location)
+ </code>
+	</example>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterInformation.SeperatorFilename">
+ -----------------------------------------------------------------------------
+ <summary>
+ The name of the file (if any) that is printed to seperate print jobs on this printer
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+	<example>Prints the name of the print job seperator that the named printer using
+ <code>
+    Dim pi As New PrinterInformation("Microsoft Office Document Image Writer", SpoolerApiConstantEnumerations.PrinterAccessRights.PRINTER_ALL_ACCESS, True)
+    Trace.WriteLine(pi.SeperatorFilename)
+ </code>
+	</example>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterInformation.PrintProcessor">
+ -----------------------------------------------------------------------------
+ <summary>
+ The name of the print processor associated to this printer
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+	<example>Prints the name of the print processor that the named printer using
+ <code>
+    Dim pi As New PrinterInformation("Microsoft Office Document Image Writer", SpoolerApiConstantEnumerations.PrinterAccessRights.PRINTER_ALL_ACCESS, True)
+    Trace.WriteLine(pi.PrintProcessor)
+ </code>
+	</example>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterInformation.DefaultDataType">
+ -----------------------------------------------------------------------------
+ <summary>
+ The default spool data type (e.g. RAW, EMF etc.) used by this printer
+ </summary>
+	<value></value>
+	<remarks>
+ If this value is set to RAW the printer will spool data in a printer control language 
+ (such as PCL or PostScript)
+ </remarks>
+	<example>Prints the name of the default data type that the named printer using
+ <code>
+    Dim pi As New PrinterInformation("Microsoft Office Document Image Writer", SpoolerApiConstantEnumerations.PrinterAccessRights.PRINTER_ALL_ACCESS, True)
+    Trace.WriteLine(pi.DefaultDataType)
+ </code>
+	</example>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterInformation.Parameters">
+ -----------------------------------------------------------------------------
+ <summary>
+ Additional parameter used when printing on this printer
+ </summary>
+	<value></value>
+	<remarks>
+ The possible values and meanings of these extra parameters depend on the 
+ printer driver being used
+ </remarks>
+	<example>Prints the extra parameters (if any) that the named printer using
+ <code>
+    Dim pi As New PrinterInformation("Microsoft Office Document Image Writer", SpoolerApiConstantEnumerations.PrinterAccessRights.PRINTER_ALL_ACCESS, True)
+    Trace.WriteLine(pi.Parameters)
+ </code>
+	</example>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterInformation.IsDefault">
+ -----------------------------------------------------------------------------
+ <summary>
+ True if this printer is the default printer on this machine
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterInformation.IsShared">
+ -----------------------------------------------------------------------------
+ <summary>
+ True if this printer is a shared device
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterInformation.IsNetworkPrinter">
+ -----------------------------------------------------------------------------
+ <summary>
+ True if this is a network printer
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterInformation.IsLocalPrinter">
+ -----------------------------------------------------------------------------
+ <summary>
+ True if this printer is local to this machine
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterInformation.Priority">
+ -----------------------------------------------------------------------------
+ <summary>
+ The default priority of print jobs sent to this printer
+ </summary>
+	<value></value>
+	<remarks>
+ Priority can range from 1 (lowest) to 99 (highest).  
+ Attempting to set the value outside the range will be reset to the nearest range bounds
+ </remarks>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterInformation.IsReady">
+ -----------------------------------------------------------------------------
+ <summary>
+ True if the printer is ready to print
+ </summary>
+	<value></value>
+	<remarks>
+ The status is updated when a job is sent to the printer so may not match the true state of the printer 
+ if there are no jobs in the queue
+ </remarks>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterInformation.IsDoorOpen">
+ -----------------------------------------------------------------------------
+ <summary>
+ True if the printer is stalled because a door or papaer tray is open
+ </summary>
+	<value></value>
+	<remarks>
+ The status is updated when a job is sent to the printer so may not match the true state of the printer 
+ if there are no jobs in the queue
+ </remarks>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterInformation.IsInError">
+ -----------------------------------------------------------------------------
+ <summary>
+ True if the printer has an error
+ </summary>
+	<value></value>
+	<remarks>
+ The status is updated when a job is sent to the printer so may not match the true state of the printer 
+ if there are no jobs in the queue
+ </remarks>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterInformation.IsInitialising">
+ -----------------------------------------------------------------------------
+ <summary>
+ True if the printer is initialising
+ </summary>
+	<value></value>
+	<remarks>
+ The status is updated when a job is sent to the printer so may not match the true state of the printer 
+ if there are no jobs in the queue
+ </remarks>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterInformation.IsAwaitingManualFeed">
+ -----------------------------------------------------------------------------
+ <summary>
+ True if the printer is stalled awaiting a manual paper feed
+ </summary>
+	<value></value>
+	<remarks>
+ The status is updated when a job is sent to the printer so may not match the true state of the printer 
+ if there are no jobs in the queue
+ </remarks>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterInformation.IsOutOfToner">
+ -----------------------------------------------------------------------------
+ <summary>
+ True if the printer is stalled because it is out of toner or ink
+ </summary>
+	<value></value>
+	<remarks>
+ The status is updated when a job is sent to the printer so may not match the true state of the printer 
+ if there are no jobs in the queue
+ </remarks>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterInformation.IsUnavailable">
+ -----------------------------------------------------------------------------
+ <summary>
+ True if the printer is currently unnavailable
+ </summary>
+	<value></value>
+	<remarks>
+ The status is updated when a job is sent to the printer so may not match the true state of the printer 
+ if there are no jobs in the queue
+ </remarks>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterInformation.IsOffline">
+ -----------------------------------------------------------------------------
+ <summary>
+ True if the printer is offline
+ </summary>
+	<value></value>
+	<remarks>
+ The status is updated when a job is sent to the printer so may not match the true state of the printer 
+ if there are no jobs in the queue
+ </remarks>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterInformation.IsOutOfmemory">
+ -----------------------------------------------------------------------------
+ <summary>
+ True if the printer is stalled because it has run out of memory
+ </summary>
+	<value></value>
+	<remarks>
+ The status is updated when a job is sent to the printer so may not match the true state of the printer 
+ if there are no jobs in the queue
+ </remarks>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterInformation.IsOutputBinFull">
+ -----------------------------------------------------------------------------
+ <summary>
+ True if the printer is stalled because it's output tray is full
+ </summary>
+	<value></value>
+	<remarks>
+ The status is updated when a job is sent to the printer so may not match the true state of the printer 
+ if there are no jobs in the queue
+ </remarks>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterInformation.IsPaperJammed">
+ -----------------------------------------------------------------------------
+ <summary>
+ True if the printer is stalled because it has a paper jam
+ </summary>
+	<value></value>
+	<remarks>
+ The status is updated when a job is sent to the printer so may not match the true state of the printer 
+ if there are no jobs in the queue
+ </remarks>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterInformation.IsOutOfPaper">
+ -----------------------------------------------------------------------------
+ <summary>
+ True if the printer is stalled because it is out of paper
+ </summary>
+	<value></value>
+	<remarks>
+ The status is updated when a job is sent to the printer so may not match the true state of the printer 
+ if there are no jobs in the queue
+ </remarks>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterInformation.Paused">
+ -----------------------------------------------------------------------------
+ <summary>
+ True if the printer is paused
+ </summary>
+	<value></value>
+	<remarks>
+ The status is updated when a job is sent to the printer so may not match the true state of the printer 
+ if there are no jobs in the queue
+ </remarks>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterInformation.IsDeletingJob">
+ -----------------------------------------------------------------------------
+ <summary>
+ True if the printer is deleting a job
+ </summary>
+	<value></value>
+	<remarks>
+ The status is updated when a job is sent to the printer so may not match the true state of the printer 
+ if there are no jobs in the queue
+ </remarks>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterInformation.IsInPowerSave">
+ -----------------------------------------------------------------------------
+ <summary>
+ True if the printer is in power saving mode
+ </summary>
+	<value></value>
+	<remarks>
+ The status is updated when a job is sent to the printer so may not match the true state of the printer 
+ if there are no jobs in the queue
+ </remarks>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterInformation.IsPrinting">
+ -----------------------------------------------------------------------------
+ <summary>
+ True if the printer is currently printing a job
+ </summary>
+	<value></value>
+	<remarks>
+ The status is updated when a job is sent to the printer so may not match the true state of the printer 
+ if there are no jobs in the queue
+ </remarks>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterInformation.IsWaitingOnUserIntervention">
+ -----------------------------------------------------------------------------
+ <summary>
+ True if the printer is stalled awaiting manual intervention
+ </summary>
+	<value></value>
+	<remarks>
+ The status is updated when a job is sent to the printer so may not match the true state of the printer 
+ if there are no jobs in the queue
+ </remarks>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterInformation.IsWarmingUp">
+ -----------------------------------------------------------------------------
+ <summary>
+ True if the printer is warming up to be ready to print
+ </summary>
+	<value></value>
+	<remarks>
+ The status is updated when a job is sent to the printer so may not match the true state of the printer 
+ if there are no jobs in the queue
+ </remarks>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterInformation.JobCount">
+ -----------------------------------------------------------------------------
+ <summary>
+ The number of print jobs queued to be printed by this printer
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterInformation.AveragePagesPerMonth">
+ -----------------------------------------------------------------------------
+ <summary>
+ The average throughput of this printer in pages per month
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterInformation.TimeWindow">
+ -----------------------------------------------------------------------------
+ <summary>
+ The time window within which jobs can be scheduled against this printer
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterInformation.DefaultPaperSource">
+ -----------------------------------------------------------------------------
+ <summary>
+ The default tray used by this printer 
+ </summary>
+	<value></value>
+	<remarks>This value can be overriden for each individual print job
+ </remarks>
+	<history>
+ 	[Duncan]	11/02/2006	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterInformation.Copies">
+ -----------------------------------------------------------------------------
+ <summary>
+ The number of copies of each print job to produce 
+ </summary>
+	<value></value>
+	<remarks>
+ This value can be overridden for each print job
+ </remarks>
+	<history>
+ 	[Duncan]	11/02/2006	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterInformation.SecurityDescriptorPointer">
+ -----------------------------------------------------------------------------
+ <summary>
+	</summary>
+	<value></value>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="M:PrinterQueueWatch.PrinterInformation.PausePrinting">
+ -----------------------------------------------------------------------------
+ <summary>
+ Pauses the printer 
+ </summary>
+	<remarks>
+	</remarks>
+	<example>Pauses the named printer
+ <code>
+    Dim pi As New PrinterInformation("Microsoft Office Document Image Writer", SpoolerApiConstantEnumerations.PrinterAccessRights.PRINTER_ALL_ACCESS, False)
+    pi.PausePrinting
+ </code>
+	</example>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="M:PrinterQueueWatch.PrinterInformation.ResumePrinting">
+ -----------------------------------------------------------------------------
+ <summary>
+ Restart a printer that has been paused
+ </summary>
+	<remarks>
+	</remarks>
+	<example>Resumes printing on the named printing
+ <code>
+    Dim pi As New PrinterInformation("Microsoft Office Document Image Writer", SpoolerApiConstantEnumerations.PrinterAccessRights.PRINTER_ALL_ACCESS, True)
+    pi.ResumePrinting
+ </code>
+	</example>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterInformation.PrintJobs">
+ -----------------------------------------------------------------------------
+ <summary>
+ The collection of PrintJobs queued for printing on this printer
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+	<example>Prints the name of the documents in the print queue
+ <code>
+    Dim pi As New PrinterInformation("Microsoft Office Document Image Writer", SpoolerApiConstantEnumerations.PrinterAccessRights.PRINTER_ALL_ACCESS, True)
+    For Each pj As PrintJob In pi.PrintJobs
+       Trace.WriteLine(pj.Document)
+    Next pj
+ </code>
+	</example>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterInformation.Monitored">
+ -----------------------------------------------------------------------------
+ <summary>
+ Sets whether or not events occuring on this printer are raised by the component
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterInformation.PauseAllNewJobs">
+ -----------------------------------------------------------------------------
+ <summary>
+ If true and the printer is being monitored, all print jobs are paused as they 
+ are added to the spool queue
+ </summary>
+	<value></value>
+	<remarks>
+ This is useful for print quota type applications as the print job is immediately 
+ paused allowing the quota program to decide whether or not to delete or resume it
+ </remarks>
+	<history>
+ 	[Duncan]	07/01/2006	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="M:PrinterQueueWatch.PrinterInformation.CanLoggedInUserAdministerPrinter">
+ -----------------------------------------------------------------------------
+ <summary>
+	</summary>
+	<returns></returns>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterInformation.PrinterDriver">
+ -----------------------------------------------------------------------------
+ <summary>
+ Returns information about the printer driver used by a given printer
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+	<example>Prints the name of the printer driver 
+ <code>
+    Dim pi As New PrinterInformation("Microsoft Office Document Image Writer", SpoolerApiConstantEnumerations.PrinterAccessRights.PRINTER_ALL_ACCESS, True)
+    Trace.WriteLine(pi.PrinterDriver.Name)
+ </code>
+	</example>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterInformation.PrinterForms">
+ -----------------------------------------------------------------------------
+ <summary>
+ Returns the collection of print forms installed on the printer
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+	<example>List the print forms on the named printer
+ <code>
+        Dim pi As New PrinterInformation("HP Laserjet 5L", SpoolerApiConstantEnumerations.PrinterAccessRights.PRINTER_ALL_ACCESS, False)
+        For pf As Integer = 0 To pi.PrinterForms.Count - 1
+            Me.ListBox1.Items.Add( pi.PrinterForms(pf).Name )
+        Next
+ </code>
+	</example>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="M:PrinterQueueWatch.PrinterInformation.#ctor(System.String,PrinterQueueWatch.SpoolerApiConstantEnumerations.PrinterAccessRights,System.Boolean)">
+ -----------------------------------------------------------------------------
+ <summary>
+ Creates a new printer information class for the named printer
+ </summary>
+	<param name="DeviceName">The name of the print device</param>
+	<param name="DesiredAccess">The required access rights for that printer</param>
+	<param name="GetJobs">True to return the collection of print jobs
+ queued against this print device
+ </param>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="M:PrinterQueueWatch.PrinterInformation.#ctor(System.String,PrinterQueueWatch.SpoolerApiConstantEnumerations.PrinterAccessRights,System.Boolean,System.Boolean)">
+ -----------------------------------------------------------------------------
+ <summary>
+ Creates a new printer information class for the named printer
+ </summary>
+	<param name="DeviceName">The name of the print device</param>
+	<param name="DesiredAccess">The required access rights for that printer</param>
+	<param name="GetSecurityInfo"></param>
+	<param name="GetJobs">True to return the collection of print jobs
+ queued against this print device
+ </param>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="M:PrinterQueueWatch.PrinterInformation.#ctor(System.String,PrinterQueueWatch.SpoolerApiConstantEnumerations.PrinterAccessRights,System.Int32,PrinterQueueWatch.PrinterMonitorComponent.MonitorJobEventInformationLevels,System.Int32)">
+ -----------------------------------------------------------------------------
+ <summary>
+ Creates a new printer information class for the named printer
+ </summary>
+	<param name="DeviceName">The name of the print device</param>
+	<param name="DesiredAccess">The required access rights for that printer</param>
+	<param name="ThreadTimeout">No longer used</param>
+	<param name="MonitorLevel"></param>
+	<param name="WatchFlags"></param>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="T:PrinterQueueWatch.PrinterInformation">
+ -----------------------------------------------------------------------------
+ Project	 : PrinterQueueWatch
+ Class	 : PrinterInformation
+ 
+ -----------------------------------------------------------------------------
+ <summary>
+ Class which holds the settings for a printer 
+ </summary>
+	<remarks>
+ These settings can apply to physical printers and also to virtual print devices
+ </remarks>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="M:PrinterQueueWatch.PrinterInformationCollection.#ctor">
+ -----------------------------------------------------------------------------
+ <summary>
+ Creates a collection of printer information for the current machine 
+ </summary>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="M:PrinterQueueWatch.PrinterInformationCollection.#ctor(System.String)">
+ -----------------------------------------------------------------------------
+ <summary>
+ Creates a collection of printer information objects for the named machine 
+ </summary>
+	<param name="Servername">The name of the server to list the printer devices</param>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="T:PrinterQueueWatch.PrinterInformationCollection">
+ -----------------------------------------------------------------------------
+ Project	 : PrinterQueueWatch
+ Class	 : PrinterInformationCollection
+ 
+ -----------------------------------------------------------------------------
+ <summary>
+ A collection of printer information classes
+ </summary>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterForm.Name">
+ -----------------------------------------------------------------------------
+ <summary>
+ The name of the printer form 
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	19/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterForm.Width">
+ -----------------------------------------------------------------------------
+ <summary>
+ The width of the form
+ </summary>
+	<value></value>
+	<remarks>
+ This value is measured in millimeters
+ </remarks>
+	<history>
+ 	[Duncan]	19/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterForm.Height">
+ -----------------------------------------------------------------------------
+ <summary>
+ The height of the printer form
+ </summary>
+	<value></value>
+	<remarks>
+ This value is measured in millimeters
+ </remarks>
+	<history>
+ 	[Duncan]	19/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterForm.ImageableArea">
+ -----------------------------------------------------------------------------
+ <summary>
+ Specifies the width and height, in thousandths of millimeters, of the form. 
+ </summary>
+	<value></value>
+	<remarks>
+ This may be smaller than the height and width if there is a non-printable margin
+ on the form
+ </remarks>
+	<history>
+ 	[Duncan]	19/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="T:PrinterQueueWatch.PrinterForm">
+ -----------------------------------------------------------------------------
+ Project	 : PrinterQueueWatch
+ Class	 : PrinterForm
+ 
+ -----------------------------------------------------------------------------
+ <summary>
+ Represents a form that has been installed on a printer
+ </summary>
+	<remarks>
+	</remarks>
+	<example>List the print forms on the named printer
+ <code>
+        Dim pi As New PrinterInformation("Microsoft Office Document Image Writer", SpoolerApiConstantEnumerations.PrinterAccessRights.PRINTER_ALL_ACCESS, True)
+        For pf As Integer = 0 to pi.PrinterForms.Count -1
+            pi.PrinterForms(pf).Name
+        Next
+ </code>
+	</example>
+	<history>
+ 	[Duncan]	19/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="T:PrinterQueueWatch.PrinterFormCollection">
+ -----------------------------------------------------------------------------
+ Project	 : PrinterQueueWatch
+ Class	 : PrinterFormCollection
+ 
+ -----------------------------------------------------------------------------
+ <summary>
+ A collection of PrintForm objects supported by a printer
+ </summary>
+	<remarks>
+	</remarks>
+	<example>List the print forms on the named printer
+ <code>
+        Dim pi As New PrinterInformation("Microsoft Office Document Image Writer", SpoolerApiConstantEnumerations.PrinterAccessRights.PRINTER_ALL_ACCESS, True)
+        For pf As Integer = 0 To In pi.PrinterForms.Count - 1
+            Me.ListBox1.Items.Add( pi.PrinterForms(pf).Name )
+        Next
+ </code>
+	</example>
+	<seealso cref="P:PrinterQueueWatch.PrinterInformation.PrinterForms"/>
+	<history>
+ 	[Duncan]	19/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="T:PrinterQueueWatch.PrinterMonitoringExceptions.InsufficentPrinterAccessRightsException">
+ -----------------------------------------------------------------------------
+ Project	 : PrinterQueueWatch
+ Class	 : PrinterMonitoringExceptions.InsufficentPrinterAccessRightsException
+ 
+ -----------------------------------------------------------------------------
+ <summary>
+ Thrown when an attempt is made to access the printer by a process that does not
+ have sufficient access rights  
+ </summary>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="T:PrinterQueueWatch.PrinterMonitoringExceptions.InsufficentPrintJobAccessRightsException">
+ -----------------------------------------------------------------------------
+ Project	 : PrinterQueueWatch
+ Class	 : PrinterMonitoringExceptions.InsufficentPrintJobAccessRightsException
+ 
+ -----------------------------------------------------------------------------
+ <summary>
+ Thrown when an attempt is made to access the print job by a process that does not
+ have sufficient access rights
+ </summary>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrintProvidor.Name">
+ -----------------------------------------------------------------------------
+ <summary>
+ The name of the print provider
+ </summary>
+	<value></value>
+	<remarks>
+ e.g. "Windows NT Local provider" (for local printers),
+ "Windows NT Remote provider" (for network printers) etc.
+ </remarks>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrintProvidor.Description">
+ -----------------------------------------------------------------------------
+ <summary>
+ The description of the print provider
+ </summary>
+	<value></value>
+	<remarks>
+ e.g. "Windows NT Local Printers" etc.
+ </remarks>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrintProvidor.Comment">
+ -----------------------------------------------------------------------------
+ <summary>
+ The comment text (if any) associated with this provider
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrintProvidor.PrintDomains">
+	<summary>
+ The print domains serviced by this print provider
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+</member><member name="T:PrinterQueueWatch.PrintProvidor">
+ Project	 : PrinterQueueWatch
+ Class	 : PrintProvidor
+ 
+ <summary>
+ Class representing the properties of a print provider on this domain
+ </summary>
+	<remarks>
+	</remarks>
+	<example>Lists all  the printer providors visible from this process
+ <code>
+        Me.ListBox1.Items.Clear()
+        For ps As Integer = 0 To server.PrintProvidors.Count - 1
+            Me.ListBox1.Items.Add( server.PrintProvidors(ps).Name )
+        Next
+ 
+ </code>
+	</example>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+</member><member name="M:PrinterQueueWatch.PrintProvidorCollection.#ctor">
+ -----------------------------------------------------------------------------
+ <summary>
+ Creates a collection of all the print providors accessible from this machine
+ </summary>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="T:PrinterQueueWatch.PrintProvidorCollection">
+ -----------------------------------------------------------------------------
+ Project	 : PrinterQueueWatch
+ Class	 : PrintProvidorCollection
+ 
+ -----------------------------------------------------------------------------
+ <summary>
+ The collection of print providors accessible from this machine
+ </summary>
+	<remarks>
+	</remarks>
+	<example>Lists all the printer providors visible from this process
+ <code>
+       Dim server As New PrintServer
+        Me.ListBox1.Items.Clear()
+        For ps As Integer = 0 To server.Providors.Count - 1 
+            Me.ListBox1.Items.Add( server.Providors(ps).Name )
+        Next
+ 
+ </code>
+	</example>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterEventArgs.PrinterInformation">
+	<summary>
+ The PrinterInformation class 
+ that represents the settings of the printer for which the event was triggered
+ </summary>
+	<value></value>
+	<remarks>
+ This holds the printer information as it was when the event occured
+ </remarks>
+</member><member name="P:PrinterQueueWatch.PrinterEventArgs.EventTime">
+ -----------------------------------------------------------------------------
+ <summary>
+ The date and time at which this printer information changed event was triggered
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+</member><member name="P:PrinterQueueWatch.PrinterEventArgs.PrinterChangeFlags">
+ -----------------------------------------------------------------------------
+ <summary>
+ The PrinterInfoChangeFlagDecoder class that holds details of what printer settings changed to trigger this 
+ printer change event
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+</member><member name="T:PrinterQueueWatch.PrinterEventArgs">
+ -----------------------------------------------------------------------------
+ Project	 : PrinterQueueWatch
+ Class	 : PrinterEventArgs
+ 
+ -----------------------------------------------------------------------------
+ <summary>
+ Class representing the event arguments used in the change events 
+ relating to the printer ..
+ </summary>
+	<remarks>
+ This is passed as an argument in the 
+ PrinterInformationChanged event of the PrinterMonitorComponent
+ </remarks>
+	<example>Prints the user name of a printer if an error occurs
+ <code>
+   Private WithEvents pmon As New PrinterMonitorComponent
+   pmon.AddPrinter("Microsoft Office Document Image Writer")
+   pmon.AddPrinter("HP Laserjet 5")
+ 
+     Private Sub pmon_PrinterInformationChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles pmon.PrinterInformationChanged
+        With CType(e, PrinterEventArgs)
+            If .PrinterInformation.IsInError Then
+                Trace.WriteLine(.PrinterInformation.PrinterName)
+            End If
+        End With
+    End Sub
+ </code>
+	</example>
+</member><member name="P:PrinterQueueWatch.PrinterInfoChangeFlagDecoder.JobCountChanged">
+	<summary>
+ True if the number of jobs on the print queue changed
+ </summary>
+	<value></value>
+	<remarks>
+ The new value will be held in the JobCount member of the PrinterInformation passed with the event
+ </remarks>
+</member><member name="P:PrinterQueueWatch.PrinterInfoChangeFlagDecoder.StatusChanged">
+ -----------------------------------------------------------------------------
+ <summary>
+ True if the printer status has changed
+ </summary>
+	<value></value>
+	<remarks>
+ The new value will be held in the status fields of the 
+ PrinterInformation passed with the event
+ </remarks>
+</member><member name="P:PrinterQueueWatch.PrinterInfoChangeFlagDecoder.AttributesChanged">
+ -----------------------------------------------------------------------------
+ <summary>
+ The printer attributes have changed
+ </summary>
+	<value></value>
+	<remarks>
+ The new value will be held in the attributes fields of the 
+ PrinterInformation passed with the event
+ </remarks>
+</member><member name="P:PrinterQueueWatch.PrinterInfoChangeFlagDecoder.CommentChanged">
+ -----------------------------------------------------------------------------
+ <summary>
+ The comment text associated with this printer has been changed
+ </summary>
+	<value></value>
+	<remarks>
+ The new value will be held in the Comment
+ member of the PrinterInformation passed with the event
+ </remarks>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterInfoChangeFlagDecoder.DeviceModeChanged">
+ -----------------------------------------------------------------------------
+ <summary>
+ The default device mode settings of the printer have changed
+ </summary>
+	<value></value>
+	<remarks>
+ The new value will be held in the default device mode related fields of the 
+ PrinterInformation passed with the event
+ </remarks>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterInfoChangeFlagDecoder.LocationChanged">
+ -----------------------------------------------------------------------------
+ <summary>
+ The printer location text has been changed
+ </summary>
+	<value></value>
+	<remarks>
+ The new value will be held in the Location
+ member of the PrinterInformation passed with the event
+ </remarks>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterInfoChangeFlagDecoder.SecurityChanged">
+ -----------------------------------------------------------------------------
+ <summary>
+ The discretionary access control settings for the printer has changed
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterInfoChangeFlagDecoder.SeperatorFileChanged">
+ -----------------------------------------------------------------------------
+ <summary>
+ The file used as a job seperator was changed
+ </summary>
+	<value></value>
+	<remarks>
+ The new value will be held in the SeperatorFilename
+ member of the PrinterInformation passed with the event.
+ </remarks>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterInfoChangeFlagDecoder.UnknownChange">
+ -----------------------------------------------------------------------------
+ <summary>
+ Unknown change - insufficient change information was provided by the printer
+ </summary>
+	<value></value>
+	<remarks>
+ This will be true if the printer driver does not issue details of why a printer change 
+ event occurs
+ </remarks>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="T:PrinterQueueWatch.PrinterInfoChangeFlagDecoder">
+ -----------------------------------------------------------------------------
+ Project	 : PrinterQueueWatch
+ Class	 : PrinterInfoChangeFlagDecoder
+ 
+ -----------------------------------------------------------------------------
+ <summary>
+ This class holds details of what printer settings changed to trigger this 
+ printer change event
+ </summary>
+	<remarks>
+ A single printer change event may have more than one cause 
+ </remarks>
+</member><member name="P:PrinterQueueWatch.DataType.Name">
+ -----------------------------------------------------------------------------
+ <summary>
+ The name of the data type of the spool file
+ </summary>
+	<remarks>
+ If this value is RAW then the spool file contains a printer control language
+ (such as PostScript, PCL-5, PCL-XL etc.)
+ </remarks>
+	<history>
+ 	[Duncan]	19/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="T:PrinterQueueWatch.DataType">
+ -----------------------------------------------------------------------------
+ Project	 : PrinterQueueWatch
+ Class	 : DataType
+ 
+ -----------------------------------------------------------------------------
+ <summary>
+ The data type of a spool file
+ </summary>
+	<remarks>
+ This is the data type that the spool file contains.  It can be EMF or RAW.
+ </remarks>
+	<example>Lists all the data types supported by each of the print processors 
+ installed on the current server
+ <code>
+        Dim server As New PrintServer
+        Dim Processor As PrintProcessor
+        Me.ListBox1.Items.Clear()
+        For ps As Integer = 0 To server.PrintProcessors.Count - 1
+            ListBox1.Items.Add( server.PrintProcessors(ps).Name )
+            For dt As Integer = 0 to server.PrintProcessors(ps).DataTypes.Count - 1
+                Me.ListBox1.Items.Add(server.PrintProcessors(ps).DataTypes(dt).Name)
+            Next
+        Next
+ </code>
+	</example>
+	<history>
+ 	[Duncan]	19/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.DataTypeCollection.Item(System.Int32)">
+	<summary>
+ Returns a single <see cref="T:PrinterQueueWatch.DataType">data type</see> from the collection
+ </summary>
+	<param name="index">The zero-based position in the collection</param>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="M:PrinterQueueWatch.DataTypeCollection.Remove(PrinterQueueWatch.DataType)">
+	<summary>
+ Removes the <see cref="T:PrinterQueueWatch.DataType">data type</see> from this collection
+ </summary>
+	<param name="obj"></param>
+	<remarks></remarks>
+</member><member name="M:PrinterQueueWatch.DataTypeCollection.#ctor(System.String)">
+ -----------------------------------------------------------------------------
+ <summary>
+ Creates a new collection containing all the data types
+ supported by the named print processor
+ </summary>
+	<param name="PrintProcessorName">The name of the print processor to retrieve the supported data types for</param>
+	<remarks>
+ The print processor must be installed on the local machine
+ <example>
+ Prints the name of all the data types supported by the <see cref="T:PrinterQueueWatch.PrintProcessor">print processor</see> named WinPrint
+ <code>
+ Dim DataTypes As New DataTypeCollection("Winprint")
+ For Each dt As DataType In DataTypes
+    Trace.WriteLine(dt.Name)
+ Next dt
+ </code>
+		</example>
+	</remarks>
+	<history>
+ 	[Duncan]	19/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="M:PrinterQueueWatch.DataTypeCollection.#ctor(System.String,System.String)">
+	<summary>
+ Creates a new collection containing all the data types
+ supported by the named print processor on the named server
+ </summary>
+	<param name="Servername">The server on which the print processor resides</param>
+	<param name="PrintProcessorName">The print processor name</param>
+	<remarks>
+		<example>
+ Prints the name of all the data types supported by the <see cref="T:PrinterQueueWatch.PrintProcessor">print processor</see> named WinPrint
+ <code>
+ Dim DataTypes As New DataTypeCollection("DUBPDOM1","Winprint")
+ For Each dt As DataType In DataTypes
+    Trace.WriteLine(dt.Name)
+ Next dt
+ </code>
+		</example>
+	</remarks>
+</member><member name="T:PrinterQueueWatch.DataTypeCollection">
+ -----------------------------------------------------------------------------
+ Project	 : PrinterQueueWatch
+ Class	 : DataTypeCollection
+ 
+ -----------------------------------------------------------------------------
+ <summary>
+ The collection of <see cref="T:PrinterQueueWatch.DataType">data types</see> supported by a print processor 
+ </summary>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	19/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="F:PrinterQueueWatch.PrintJob.TraceSwitch">
+ -----------------------------------------------------------------------------
+ <summary>
+ Print Job specific tracing switch
+ </summary>
+	<remarks>Add a trace flag named "PrintJob" in the application .config file to 
+ trace print job related processes
+ </remarks>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrintJob.JobId">
+ -----------------------------------------------------------------------------
+ <summary>
+ The unique identifier of the print job
+ </summary>
+	<value></value>
+	<remarks>
+ This id is only unique for the printer
+ </remarks>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrintJob.PrinterName">
+ -----------------------------------------------------------------------------
+ <summary>
+ The name of the print device that this job is queued against
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+	<example>Prints the name of the printer whenever a new job is added to the monitored printers
+ <code>
+   Private WithEvents pmon As New PrinterMonitorComponent
+   pmon.AddPrinter("Microsoft Office Document Image Writer")
+   pmon.AddPrinter("HP Laserjet 5")
+ 
+    Private Sub pmon_JobAdded(ByVal sender As Object, ByVal e As System.EventArgs) Handles pmon.JobAdded
+    With CType(e, PrintJobEventArgs)
+        Trace.WriteLine(.PrintJob.PrinterName)
+     End With
+  End Sub
+ </code>
+	</example>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrintJob.UserName">
+ -----------------------------------------------------------------------------
+ <summary>
+ The name of the user that sent the print job for printing
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+	<example>Prints the name of the user that originated the job whenever a new job is added to the monitored printers
+ <code>
+   Private WithEvents pmon As New PrinterMonitorComponent
+   pmon.AddPrinter("Microsoft Office Document Image Writer")
+   pmon.AddPrinter("HP Laserjet 5")
+ 
+    Private Sub pmon_JobAdded(ByVal sender As Object, ByVal e As System.EventArgs) Handles pmon.JobAdded
+    With CType(e, PrintJobEventArgs)
+        Trace.WriteLine(.PrintJob.Username)
+     End With
+  End Sub
+ </code>
+	</example>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrintJob.MachineName">
+ -----------------------------------------------------------------------------
+ <summary>
+ The name of the workstation that sent the print job to print
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+	<example>Prints the name of the machine that originated a job whenever a new job is added to the monitored printers
+ <code>
+   Private WithEvents pmon As New PrinterMonitorComponent
+   pmon.AddPrinter("Microsoft Office Document Image Writer")
+   pmon.AddPrinter("HP Laserjet 5")
+ 
+    Private Sub pmon_JobAdded(ByVal sender As Object, ByVal e As System.EventArgs) Handles pmon.JobAdded
+    With CType(e, PrintJobEventArgs)
+        Trace.WriteLine(.PrintJob.MachineName)
+     End With
+  End Sub
+ </code>
+	</example>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrintJob.Document">
+ -----------------------------------------------------------------------------
+ <summary>
+ The document name being printed
+ </summary>
+	<value></value>
+	<remarks>
+ This value is set by the application which sends the job to be printed.  Many 
+ applications put the application name at the start of the document name to aid 
+ identification
+ </remarks>
+	<example>Prints the name of the documents in the print queue
+ <code>
+    Dim pi As New PrinterInformation("Microsoft Office Document Image Writer", SpoolerApiConstantEnumerations.PrinterAccessRights.PRINTER_ALL_ACCESS, True)
+    For Each pj As PrintJob In pi.PrintJobs
+       Trace.WriteLine(pj.Document)
+    Next pj
+ </code>
+	</example>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrintJob.StatusDescription">
+ -----------------------------------------------------------------------------
+ <summary>
+ The description of the current status of the print job
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+	<example>Prints the status of a job when it is added to the monitored printers
+ <code>
+   Private WithEvents pmon As New PrinterMonitorComponent
+   pmon.AddPrinter("Microsoft Office Document Image Writer")
+   pmon.AddPrinter("HP Laserjet 5")
+ 
+    Private Sub pmon_JobAdded(ByVal sender As Object, ByVal e As System.EventArgs) Handles pmon.JobAdded
+    With CType(e, PrintJobEventArgs)
+        Trace.WriteLine(.PrintJob.StatusDescription)
+     End With
+  End Sub
+ </code>
+	</example>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrintJob.DataType">
+ -----------------------------------------------------------------------------
+ <summary>
+ The name of the data type that is used for this print job
+ </summary>
+	<value></value>
+	<remarks>
+ This can be RAW or EMF.  if the data type is RAW then the spool file contains 
+ a printer control language such as PCL or PostScript
+ </remarks>
+	<example>Prints the data type of each job as it is added to the monitored printers
+ <code>
+   Private WithEvents pmon As New PrinterMonitorComponent
+   pmon.AddPrinter("Microsoft Office Document Image Writer")
+   pmon.AddPrinter("HP Laserjet 5")
+ 
+    Private Sub pmon_JobAdded(ByVal sender As Object, ByVal e As System.EventArgs) Handles pmon.JobAdded
+    With CType(e, PrintJobEventArgs)
+        Trace.WriteLine(.PrintJob.DataType)
+     End With
+  End Sub
+ </code>
+	</example>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrintJob.TotalPages">
+ -----------------------------------------------------------------------------
+ <summary>
+ The total number of pages in this print job
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+	<example>Prints the number of pages in each new job as it is added to the monitored printers
+ <code>
+   Private WithEvents pmon As New PrinterMonitorComponent
+   pmon.AddPrinter("Microsoft Office Document Image Writer")
+   pmon.AddPrinter("HP Laserjet 5")
+ 
+    Private Sub pmon_JobAdded(ByVal sender As Object, ByVal e As System.EventArgs) Handles pmon.JobAdded
+    With CType(e, PrintJobEventArgs)
+        Trace.WriteLine(.PrintJob.TotalPages.ToString)
+     End With
+  End Sub
+ </code>
+	</example>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrintJob.PagesPrinted">
+ -----------------------------------------------------------------------------
+ <summary>
+ The number of pages that have been printed
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+	<example>Prints the number of pages in each job as it is deleted
+ <code>
+   Private WithEvents pmon As New PrinterMonitorComponent
+   pmon.AddPrinter("Microsoft Office Document Image Writer")
+   pmon.AddPrinter("HP Laserjet 5")
+ 
+   Private Sub pmon_JobDeleted(ByVal sender As Object, ByVal e As System.EventArgs) Handles pmon.JobDeleted
+    With CType(e, PrintJobEventArgs)
+        Trace.WriteLine(.PrintJob.PagesPrinted.ToString)
+    End With
+  End Sub
+ </code>
+	</example>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrintJob.Position">
+ -----------------------------------------------------------------------------
+ <summary>
+ The position of the job in the print device job queue
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+	<example>Prints the position in the queue of each new job as it is added to the monitored printers
+ <code>
+   Private WithEvents pmon As New PrinterMonitorComponent
+   pmon.AddPrinter("Microsoft Office Document Image Writer")
+   pmon.AddPrinter("HP Laserjet 5")
+ 
+    Private Sub pmon_JobAdded(ByVal sender As Object, ByVal e As System.EventArgs) Handles pmon.JobAdded
+    With CType(e, PrintJobEventArgs)
+        Trace.WriteLine(.PrintJob.Position.ToString)
+     End With
+  End Sub
+ </code>
+	</example>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="M:PrinterQueueWatch.PrintJob.Update">
+ -----------------------------------------------------------------------------
+ <summary>
+ Get the latest state of the print job from the print device spool queue
+ </summary>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="M:PrinterQueueWatch.PrintJob.Commit">
+ -----------------------------------------------------------------------------
+ <summary>
+ Update the print spool with changes made to this print job class
+ </summary>
+	<remarks>
+	</remarks>
+	<example>Changes the user name for each new job as it is added to the monitored 
+ printers and commits this to the print queue
+ <code>
+   Private WithEvents pmon As New PrinterMonitorComponent
+   pmon.AddPrinter("Microsoft Office Document Image Writer")
+   pmon.AddPrinter("HP Laserjet 5")
+ 
+    Private Sub pmon_JobAdded(ByVal sender As Object, ByVal e As System.EventArgs) Handles pmon.JobAdded
+    With CType(e, PrintJobEventArgs)
+        .PrintJob.Username = "New user name"
+        .PrintJob.Commit
+     End With
+  End Sub
+ </code>
+	</example>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrintJob.PaperKind">
+ -----------------------------------------------------------------------------
+ <summary>
+ The paper type that the job is intended to be printed on
+ </summary>
+	<value></value>
+	<remarks>
+ This could be a standard paper size (A4, A5 etc) or custom paper size if the printer 
+ supports this
+ </remarks>
+	<example>Prints the paper type of each job as it is added to the monitored printers
+ <code>
+   Private WithEvents pmon As New PrinterMonitorComponent
+   pmon.AddPrinter("Microsoft Office Document Image Writer")
+   pmon.AddPrinter("HP Laserjet 5")
+ 
+    Private Sub pmon_JobAdded(ByVal sender As Object, ByVal e As System.EventArgs) Handles pmon.JobAdded
+    With CType(e, PrintJobEventArgs)
+        Trace.WriteLine(.PrintJob.PaperKind.ToString)
+     End With
+  End Sub
+ </code>
+	</example>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrintJob.PaperWidth">
+ -----------------------------------------------------------------------------
+ <summary>
+ The width of the selected paper (if PaperKind is PaperKind.Custom)
+ </summary>
+	<value></value>
+	<remarks>
+ This value is measured in millimeters
+ </remarks>
+	<example>Prints the paper width of each job as it is added to the monitored printers
+ <code>
+   Private WithEvents pmon As New PrinterMonitorComponent
+   pmon.AddPrinter("Microsoft Office Document Image Writer")
+   pmon.AddPrinter("HP Laserjet 5")
+ 
+    Private Sub pmon_JobAdded(ByVal sender As Object, ByVal e As System.EventArgs) Handles pmon.JobAdded
+    With CType(e, PrintJobEventArgs)
+        Trace.WriteLine(.PrintJob.PaperWidth.ToString)
+     End With
+  End Sub
+ </code>
+	</example>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrintJob.PaperLength">
+ -----------------------------------------------------------------------------
+ <summary>
+ The height of the selected paper (if PaperKind is PaperKind.Custom)
+ </summary>
+	<value></value>
+	<remarks>
+ This value is measured in millimeters
+ </remarks>
+	<example>Prints the paper length of each job as it is added to the monitored printers
+ <code>
+   Private WithEvents pmon As New PrinterMonitorComponent
+   pmon.AddPrinter("Microsoft Office Document Image Writer")
+   pmon.AddPrinter("HP Laserjet 5")
+ 
+    Private Sub pmon_JobAdded(ByVal sender As Object, ByVal e As System.EventArgs) Handles pmon.JobAdded
+    With CType(e, PrintJobEventArgs)
+        Trace.WriteLine(.PrintJob.PaperLength.ToString)
+     End With
+  End Sub
+ </code>
+	</example>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrintJob.Landscape">
+ -----------------------------------------------------------------------------
+ <summary>
+ True if the print job is to be printed in landscape mode
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+	<example>Prints the landacape mode of each job as it is added to the monitored printers
+ <code>
+   Private WithEvents pmon As New PrinterMonitorComponent
+   pmon.AddPrinter("Microsoft Office Document Image Writer")
+   pmon.AddPrinter("HP Laserjet 5")
+ 
+    Private Sub pmon_JobAdded(ByVal sender As Object, ByVal e As System.EventArgs) Handles pmon.JobAdded
+    With CType(e, PrintJobEventArgs)
+        Trace.WriteLine(IIf(.PrintJob.Landsape,"Landscape", "Portrait"))
+     End With
+  End Sub
+ </code>
+	</example>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrintJob.Color">
+ -----------------------------------------------------------------------------
+ <summary>
+ True if the print job is to be printed in colour
+ </summary>
+	<value></value>
+	<remarks>
+ This will be true if the setting is set to rpint in colour even if
+ the actual document has no colour elements 
+ </remarks>
+	<example>Prints the colour / monochrome setting of each job as it is added to the monitored printers
+ <code>
+   Private WithEvents pmon As New PrinterMonitorComponent
+   pmon.AddPrinter("Microsoft Office Document Image Writer")
+   pmon.AddPrinter("HP Laserjet 5")
+ 
+    Private Sub pmon_JobAdded(ByVal sender As Object, ByVal e As System.EventArgs) Handles pmon.JobAdded
+    With CType(e, PrintJobEventArgs)
+        Trace.WriteLine(Iif(.PrintJob.Color,"Colour", "Monochrome"))
+     End With
+  End Sub
+ </code>
+	</example>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrintJob.PaperSource">
+ -----------------------------------------------------------------------------
+ <summary>
+ The input source (tray or bin) requested for the print job
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+	<example>Prints the paper source of each job as it is added to the monitored printers
+ <code>
+   Private WithEvents pmon As New PrinterMonitorComponent
+   pmon.AddPrinter("Microsoft Office Document Image Writer")
+   pmon.AddPrinter("HP Laserjet 5")
+ 
+    Private Sub pmon_JobAdded(ByVal sender As Object, ByVal e As System.EventArgs) Handles pmon.JobAdded
+    With CType(e, PrintJobEventArgs)
+        Trace.WriteLine(.PrintJob.PaperSource.ToString)
+     End With
+  End Sub
+ </code>
+	</example>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrintJob.PrinterResolutionKind">
+ -----------------------------------------------------------------------------
+ <summary>
+ The resolution to use for the print document
+ </summary>
+	<value></value>
+	<remarks>
+ Can be draft, low, medium or high quality or custom quality
+ </remarks>
+	<example>Prints the print resolution of each job as it is added to the monitored printers
+ <code>
+   Private WithEvents pmon As New PrinterMonitorComponent
+   pmon.AddPrinter("Microsoft Office Document Image Writer")
+   pmon.AddPrinter("HP Laserjet 5")
+ 
+    Private Sub pmon_JobAdded(ByVal sender As Object, ByVal e As System.EventArgs) Handles pmon.JobAdded
+    With CType(e, PrintJobEventArgs)
+        Trace.WriteLine(.PrintJob.PrinterResolutionKind)
+     End With
+  End Sub
+ </code>
+	</example>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrintJob.PrinterResolutionX">
+ -----------------------------------------------------------------------------
+ <summary>
+ The printer resolution in the horizontal dimension 
+ </summary>
+	<value></value>
+	<remarks>
+ This value is set if PrinterResolutionKind is PrinterResolutionKind.Custom
+ This is measured in dots per inch
+ </remarks>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrintJob.PrinterResolutionY">
+ -----------------------------------------------------------------------------
+ <summary>
+ The printer resolution in the vertical dimension 
+ </summary>
+	<value></value>
+	<remarks>
+ This valuse is set if PrinterResolutionKind is PrinterResolutionKind.Custom.
+ This is measured in dots per inch
+ </remarks>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrintJob.Copies">
+ -----------------------------------------------------------------------------
+ <summary>
+ The number of copies of each page to print
+ </summary>
+	<value></value>
+	<remarks>
+ Some applications misreport the number of copies to the spooler which will 
+ result in incorrect values being returned
+ </remarks>
+	<example>Prints the number of copies of each job as it is added to the monitored printers
+ <code>
+   Private WithEvents pmon As New PrinterMonitorComponent
+   pmon.AddPrinter("Microsoft Office Document Image Writer")
+   pmon.AddPrinter("HP Laserjet 5")
+ 
+    Private Sub pmon_JobAdded(ByVal sender As Object, ByVal e As System.EventArgs) Handles pmon.JobAdded
+    With CType(e, PrintJobEventArgs)
+        Trace.WriteLine(.PrintJob.Copies.ToString)
+     End With
+  End Sub
+ </code>
+	</example>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrintJob.NotifyUserName">
+ -----------------------------------------------------------------------------
+ <summary>
+ The user to notify about the progress of this print job
+ </summary>
+	<value></value>
+	<remarks>
+ This should be set to the network login name of the user 
+ </remarks>
+	<example>Changes the notify user of each job as it is added to the monitored printers
+ <code>
+   Private WithEvents pmon As New PrinterMonitorComponent
+   pmon.AddPrinter("Microsoft Office Document Image Writer")
+   pmon.AddPrinter("HP Laserjet 5")
+ 
+    Private Sub pmon_JobAdded(ByVal sender As Object, ByVal e As System.EventArgs) Handles pmon.JobAdded
+    With CType(e, PrintJobEventArgs)
+        .PrintJob.NotifyUserName = "Administrator"
+        .PrintJob.Commit
+     End With
+  End Sub
+ </code>
+	</example>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrintJob.PrintProcessorName">
+ -----------------------------------------------------------------------------
+ <summary>
+ The name of the print processor 
+ which is responsible for printing this job
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrintJob.DriverName">
+ -----------------------------------------------------------------------------
+ <summary>
+ The name of the printer driver
+ that is responsible for producing this print job
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrintJob.Priority">
+ -----------------------------------------------------------------------------
+ <summary>
+ The priority of this print job.  Higher priority jobs will be processed ahead
+ of lower priority jobs
+ </summary>
+	<value></value>
+	<remarks>
+ Valid values are in the range of 1 (lowest priority) to 99 (highest priority)
+ </remarks>
+	<example>Prints the priority of each job as it is added to the monitored printers
+ <code>
+   Private WithEvents pmon As New PrinterMonitorComponent
+   pmon.AddPrinter("Microsoft Office Document Image Writer")
+   pmon.AddPrinter("HP Laserjet 5")
+ 
+    Private Sub pmon_JobAdded(ByVal sender As Object, ByVal e As System.EventArgs) Handles pmon.JobAdded
+    With CType(e, PrintJobEventArgs)
+        Trace.WriteLine(.PrintJob.Priority.ToString)
+     End With
+  End Sub
+ </code>
+	</example>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrintJob.Parameters">
+ -----------------------------------------------------------------------------
+ <summary>
+ Extra driver specific parameters for this print job
+ </summary>
+	<value></value>
+	<remarks>
+ The acceptable parameters and values depend on the print driver being used to 
+ print this print job
+ </remarks>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrintJob.Submitted">
+ -----------------------------------------------------------------------------
+ <summary>
+ Specifies the date and time at which the job was submitted for printing
+ </summary>
+	<value></value>
+	<remarks>
+ The time value is returned in the local time of the machine on which the PrintQueueWatch
+ component is installed 
+ </remarks>
+	<example>Prints the date and time submitted of each job as it is added to the monitored printers
+ <code>
+   Private WithEvents pmon As New PrinterMonitorComponent
+   pmon.AddPrinter("Microsoft Office Document Image Writer")
+   pmon.AddPrinter("HP Laserjet 5")
+ 
+    Private Sub pmon_JobAdded(ByVal sender As Object, ByVal e As System.EventArgs) Handles pmon.JobAdded
+    With CType(e, PrintJobEventArgs)
+        Trace.WriteLine(.PrintJob.Submitted.ToString)
+     End With
+  End Sub
+ </code>
+	</example>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrintJob.TimeWindow">
+ -----------------------------------------------------------------------------
+ <summary>
+ Specifies the earliest time and latest times that the job can be printed
+ </summary>
+	<value></value>
+	<remarks>
+ See the TimeWindow class for 
+ details of the settings of this class
+ </remarks>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrintJob.QueuedTime">
+ -----------------------------------------------------------------------------
+ <summary>
+ Specifies the total time, in milliseconds, that has elapsed since the job began printing
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrintJob.JobSize">
+ -----------------------------------------------------------------------------
+ <summary>
+ Specifies the size, in bytes, of the job
+ </summary>
+	<value></value>
+	<remarks>
+ While the job is being spooled this will contain the current size of the spool file
+ </remarks>
+	<example>Prints the job size of each job as it is added to the monitored printers
+ <code>
+   Private WithEvents pmon As New PrinterMonitorComponent
+   pmon.AddPrinter("Microsoft Office Document Image Writer")
+   pmon.AddPrinter("HP Laserjet 5")
+ 
+    Private Sub pmon_JobAdded(ByVal sender As Object, ByVal e As System.EventArgs) Handles pmon.JobAdded
+    With CType(e, PrintJobEventArgs)
+        Trace.WriteLine(.PrintJob.DataType)
+     End With
+  End Sub
+ </code>
+	</example>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrintJob.LogicalPagesPerPhysicalPage">
+ -----------------------------------------------------------------------------
+ <summary>
+ The number of logical pages for each physical page
+ </summary>
+	<value></value>
+	<remarks>This value should be 1, 2, 4, 8 or 16
+ </remarks>
+	<history>
+ 	[Duncan]	11/02/2006	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrintJob.DefaultPaperSource">
+ -----------------------------------------------------------------------------
+ <summary>
+ The paper tray (or input bin) to use for this print job
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	11/02/2006	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="M:PrinterQueueWatch.PrintJob.Cancel">
+ -----------------------------------------------------------------------------
+ <summary>
+ Cancels this print job and removes it from the spool queue
+ </summary>
+	<remarks>
+ Only the originator of a print job or a user with administrator rights on the
+ print device may cancel the job
+ </remarks>
+	<exception cref="T:PrinterQueueWatch.PrinterMonitoringExceptions.InsufficentPrintJobAccessRightsException">
+ Thrown if the user has no access rights to delete this job
+ </exception>
+	<example>Cancels any jobs that have more than 8 copies 
+ <code>
+   Private WithEvents pmon As New PrinterMonitorComponent
+   pmon.AddPrinter("Microsoft Office Document Image Writer")
+   pmon.AddPrinter("HP Laserjet 5")
+ 
+    Private Sub pmon_JobAdded(ByVal sender As Object, ByVal e As System.EventArgs) Handles pmon.JobAdded
+    With CType(e, PrintJobEventArgs).PrintJob
+        If .Copies &gt; 8 Then
+           .Cancel
+        End If
+     End With
+  End Sub
+ </code>
+	</example>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="M:PrinterQueueWatch.PrintJob.Delete">
+ -----------------------------------------------------------------------------
+ <summary>
+ Deletes this print job
+ </summary>
+	<remarks>
+ Only the originator of a print job or a user with administrator rights on the
+ print device may delete it
+ </remarks>
+	<exception cref="T:PrinterQueueWatch.PrinterMonitoringExceptions.InsufficentPrintJobAccessRightsException">
+ Thrown if the user has no access rights to delete this job
+ </exception>
+	<example>Cancels any jobs that have more than 8 copies 
+ <code>
+   Private WithEvents pmon As New PrinterMonitorComponent
+   pmon.AddPrinter("Microsoft Office Document Image Writer")
+   pmon.AddPrinter("HP Laserjet 5")
+ 
+    Private Sub pmon_JobAdded(ByVal sender As Object, ByVal e As System.EventArgs) Handles pmon.JobAdded
+    With CType(e, PrintJobEventArgs).PrintJob
+        If .Copies &gt; 8 Then
+           .Delete
+        End If
+     End With
+  End Sub
+ </code>
+	</example>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrintJob.Paused">
+ -----------------------------------------------------------------------------
+ <summary>
+ Whether the print job is paused
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+	<exception cref="T:System.ComponentModel.Win32Exception">
+ Thrown if the job does not exist or the user has no access rights to pause it
+ </exception>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrintJob.Deleted">
+ -----------------------------------------------------------------------------
+ <summary>
+ True if the print job has been deleted
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrintJob.Deleting">
+ -----------------------------------------------------------------------------
+ <summary>
+ True if the print job is being deleted
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrintJob.Printed">
+ -----------------------------------------------------------------------------
+ <summary>
+ True if the job has been printed
+ </summary>
+	<value></value>
+	<remarks>
+ This will be true once the job has been completely sent to the printer.  This 
+ does not mean that the physical print out has necessarily appeared.
+ </remarks>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrintJob.Printing">
+ -----------------------------------------------------------------------------
+ <summary>
+ True if the print job is currently printing
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrintJob.InError">
+ -----------------------------------------------------------------------------
+ <summary>
+ True if there is an error with this print job that prevents it from 
+ printing
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrintJob.Offline">
+ -----------------------------------------------------------------------------
+ <summary>
+ True if the job is in error because the printer is off line
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrintJob.PaperOut">
+ -----------------------------------------------------------------------------
+ <summary>
+ True if the job is in error because the printer has run out of paper
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrintJob.UserInterventionRequired">
+ -----------------------------------------------------------------------------
+ <summary>
+ True if the print job is in error because the printer requires user intervention
+ </summary>
+	<value></value>
+	<remarks>
+ This can be caused by a print job that requires manual paper feed
+ </remarks>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrintJob.Spooling">
+ -----------------------------------------------------------------------------
+ <summary>
+ True if the print job is spooling to a spool file
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="M:PrinterQueueWatch.PrintJob.#ctor(System.String,System.Int32)">
+ -----------------------------------------------------------------------------
+ <summary>
+ Returns the job identified by JobId queued against the device named
+ </summary>
+	<param name="DeviceName">The name of the device the job is queued against</param>
+	<param name="idJob">The unique job identifier</param>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="M:PrinterQueueWatch.PrintJob.Dispose">
+ -----------------------------------------------------------------------------
+ <summary>
+ Frees up system resources used by this PrintJob class
+ </summary>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="M:PrinterQueueWatch.PrintJob.UniquePrinterObject">
+ -----------------------------------------------------------------------------
+ <summary>
+ Returns the unique name of this job which can be passed to get a handle to it
+ </summary>
+	<returns>[PrinterNmae], PrintJob xxxxx </returns>
+	<remarks>Used internally for ReadPrinter api call
+ </remarks>
+	<history>
+ 	[Duncan]	05/12/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="T:PrinterQueueWatch.PrintJob">
+ -----------------------------------------------------------------------------
+ Project	 : PrinterQueueWatch
+ Class	 : PrintJob
+ 
+ -----------------------------------------------------------------------------
+ <summary>
+ Represents the properties of a single print job queued against a print device
+ </summary>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrintJobCollection.ItemByJobId(System.Int32)">
+ -----------------------------------------------------------------------------
+ <summary>
+ Gets the print job by its unique Job Id
+ </summary>
+	<param name="dwJob"></param>
+	<value></value>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrintJobCollection.ContainsJobId(System.Int32)">
+ -----------------------------------------------------------------------------
+ <summary>
+ Returns true if this collection contains the given Job Id
+ </summary>
+	<param name="pjTestId"></param>
+	<value></value>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="M:PrinterQueueWatch.PrintJobCollection.#ctor">
+ -----------------------------------------------------------------------------
+ <summary>
+ Creates a new empty PrintJobs collection
+ </summary>
+	<remarks>
+ This constructor is not meant for use except by the PrinterQueueWatch component
+ </remarks>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="M:PrinterQueueWatch.PrintJobCollection.#ctor(System.IntPtr,System.Int32)">
+ -----------------------------------------------------------------------------
+ <summary>
+ Creates a new list and fills it with all the jobs currently on a given printer's queue by printer handle
+ </summary>
+	<param name="mhPrinter">The handle of the printer to get the print jobs for</param>
+	<param name="JobCount">The number of jobs to retrieve</param>
+	<remarks>
+ If JobCount is less than the number of jobs in teh queue only the first JobCount number will 
+ be returned
+ </remarks>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="M:PrinterQueueWatch.PrintJobCollection.#ctor(System.String,System.Int32)">
+ -----------------------------------------------------------------------------
+ <summary>
+ Creates a new list and fills it with all the jobs currently on a given printer's queue by printer device name
+ </summary>
+	<param name="DeviceName">The name of the print device to get the jobs for</param>
+	<param name="JobCount">The number of print jobs to return</param>
+	<remarks>
+ If JobCount is less than the number of jobs in the queue only the first JobCount number will 
+ be returned
+ </remarks>
+	<exception cref="T:System.ComponentModel.Win32Exception">
+ Thrown if the print device does not exist or the user has no access rights to retrieve the job queue from it
+ </exception>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="T:PrinterQueueWatch.PrintJobCollection">
+ -----------------------------------------------------------------------------
+ Project	 : PrinterQueueWatch
+ Class	 : PrintJobCollection
+ 
+ -----------------------------------------------------------------------------
+ <summary>
+ A collection of print jobs
+ </summary>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="M:PrinterQueueWatch.TimeWindow.#ctor(System.Int32,System.Int32)">
+ -----------------------------------------------------------------------------
+ <summary>
+ Creates a new time window with the given range
+ </summary>
+	<param name="StartTime">The start of the time range in minutes past midnight GMT</param>
+	<param name="EndTime">The end of the time range in minutes past midnight GMT</param>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="M:PrinterQueueWatch.TimeWindow.#ctor(System.DateTime,System.DateTime)">
+ -----------------------------------------------------------------------------
+ <summary>
+ Creates a new time window with the given range
+ </summary>
+	<param name="StartTime">The start of the time range in local time</param>
+	<param name="EndTime">The end of the time range in local time</param>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.TimeWindow.StartTime">
+ -----------------------------------------------------------------------------
+ <summary>
+ The time of the start of this time range
+ </summary>
+	<value></value>
+	<remarks>
+ This value is in the system local time 
+ </remarks>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.TimeWindow.EndTime">
+ -----------------------------------------------------------------------------
+ <summary>
+ The end of the time range
+ </summary>
+	<value></value>
+	<remarks>
+ This time is in local system time
+ </remarks>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.TimeWindow.Unrestricted">
+ -----------------------------------------------------------------------------
+ <summary>
+ True if the time range is unrestricted
+ </summary>
+	<value></value>
+	<remarks>
+ If the time range is unrestricted it is from midnight to midnight
+ </remarks>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="M:PrinterQueueWatch.TimeWindow.ToString">
+ -----------------------------------------------------------------------------
+ <summary>
+ Returns a text description of the tiem range
+ </summary>
+	<returns></returns>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="T:PrinterQueueWatch.TimeWindow">
+ -----------------------------------------------------------------------------
+ Project	 : PrinterQueueWatch
+ Class	 : TimeWindow
+ 
+ -----------------------------------------------------------------------------
+ <summary>
+ Specifies a time window during which an event can be scheduled -
+  for example when a print job can be printed
+ </summary>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	21/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="T:PrinterQueueWatch.PrinterDataFile">
+ -----------------------------------------------------------------------------
+ Project	 : PrinterQueueWatch
+ Class	 : PrinterDataFile
+ 
+ -----------------------------------------------------------------------------
+ <summary>
+ An in-memory representation of a print spool file
+ </summary>
+	<remarks>
+ This class is for internal use of the PrintQueueWatch component
+ </remarks>
+	<history>
+ 	[Duncan]	05/12/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.EMF_SpoolFile.DEVMODE.FormName">
+ -----------------------------------------------------------------------------
+ <summary>
+ The name of the form used to print the print job
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	17/02/2006	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.EMF_SpoolFile.DEVMODE.DriverVersion">
+ -----------------------------------------------------------------------------
+ <summary>
+ The version number of the driver used to print this job
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	17/02/2006	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="T:PrinterQueueWatch.EMF_SpoolFile">
+ -----------------------------------------------------------------------------
+ Project	 : PrinterQueueWatch
+ Class	 : EMF_SpoolFile
+ 
+ -----------------------------------------------------------------------------
+ <summary>
+ Helper class for EMF format spool file
+ </summary>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	12/12/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="T:PrinterQueueWatch.PCLXLSpoolFile">
+ -----------------------------------------------------------------------------
+ Project	 : PrinterQueueWatch
+ Class	 : PCLXLSpoolFile
+ 
+ -----------------------------------------------------------------------------
+ <summary>
+ Helper class for PCL XL format spool file
+ </summary>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	13/12/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="M:PrinterQueueWatch.PrinterDriver.AddPrinterDriver(System.String,PrinterQueueWatch.SpoolerApiConstantEnumerations.PrinterDriverOperatingSystemVersion,System.String,System.String,System.IO.FileInfo,System.IO.FileInfo,System.IO.FileInfo)">
+ -----------------------------------------------------------------------------
+ <summary>
+ Installs a printer driver on the named server
+ </summary>
+	<param name="Servername">The server to install the driver on</param>
+	<param name="OperatingSystemVersion">The operating system version that the driver targets</param>
+	<param name="DriverName">The name of the driver</param>
+	<param name="Environment">The environment for which the driver was written (for example, "Windows NT x86", "Windows NT R4000", "Windows NT Alpha_AXP", or "Windows 4.0")</param>
+	<param name="DriverFile">The driver program file</param>
+	<param name="DriverDataFile">The file which contains the driver data</param>
+	<param name="DriverConfigFile">file name or a full path and file name for the device-driver's configuration .dll</param>
+	<returns></returns>
+	<remarks>
+ Before an application calls the AddPrinterDriver function, all files 
+ required by the driver must be copied to the system's printer-driver directory.
+ </remarks>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="M:PrinterQueueWatch.PrinterDriver.GetPrinterDriverDirectory">
+ -----------------------------------------------------------------------------
+ <summary>
+ Returns the directory on the current machine in which the printer drivers and
+ their support files are kept
+ </summary>
+	<returns></returns>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="M:PrinterQueueWatch.PrinterDriver.GetPrinterDriverDirectory(System.String)">
+ -----------------------------------------------------------------------------
+ <summary>
+ Returns the directory on the named machine in which the printer drivers and
+ their support files are kept
+ </summary>
+	<param name="Servername">The name of the machine to get the directory for</param>
+	<returns></returns>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="M:PrinterQueueWatch.PrinterDriver.GetPrinterDriverDirectory(System.String,System.String)">
+ -----------------------------------------------------------------------------
+ <summary>
+ Returns the directory on the named machine in which the printer drivers and
+ their support files are kept for the named environment
+ </summary>
+	<param name="Servername">The name of the machine to get the directory for</param>
+	<param name="Environment">The environment for which the driver was written (for example, "Windows NT x86", "Windows NT R4000", "Windows NT Alpha_AXP", or "Windows 4.0")</param>
+	<returns></returns>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterDriver.OperatingSystemVersion">
+ -----------------------------------------------------------------------------
+ <summary>
+ The operating system for which this driver was written
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+</member><member name="P:PrinterQueueWatch.PrinterDriver.Name">
+ -----------------------------------------------------------------------------
+ <summary>
+ The unique name by which this printer driver is known
+ </summary>
+	<value></value>
+	<remarks>
+	</remarks>
+	<history>
+ 	[Duncan]	20/11/2005	Created
+ </history>
+ -----------------------------------------------------------------------------
+
+</member><member name="P:PrinterQueueWatch.PrinterDriver.Environment">
+ -----------------------------------------------------------------------------
+ <summary>
+ The environment for which the driver was written 
+ </summary>
+	<value></value>
+	<remarks>
+ For example, "Windows NT x86", "Windows NT R4000", "Windows NT Alpha_AXP", or "Windows 4.0"
+ </remarks>
+</member><member name="P:PrinterQueueWatch.PrinterDriver.DriverPath">
+	<summary>
+ The file name or full path and file name for the file that contains the device driver 
+ </summary>
+	<value></value>
+	<remarks>"
+ For example, "c:\drivers\pscript.dll"
+ This value will be relative to the server
+ </remarks>
+</member><member name="P:PrinterQueueWatch.PrinterDriver.DataFile">
+	<summary>
+ The file name or a full path and file name for the file that contains driver data
+ </summary>
+	<value></value>
+	<remarks>
+ For example, "c:\drivers\Qms810.ppd" 
+ </remarks>
+</member><member name="P:PrinterQueueWatch.PrinterDriver.ConfigurationFile">
+	<summary>
+ The file name or a full path and file name for the device-driver's configuration .dll
+ </summary>
+	<value></value>
+	<remarks>
+ These configuration files provide the user interface for the extra 
+ </remarks>
+</member><member name="P:PrinterQueueWatch.PrinterDriver.HelpFile">
+	<summary>
+ The file name or a full path and file name for the device driver's help file.
+ </summary>
+	<value></value>
+	<remarks>
+ This member may be blank if the driver has no help file
+ </remarks>
+</member><member name="P:PrinterQueueWatch.PrinterDriver.MonitorName">
+	<summary>
+ The name of a language monitor attached to this driver (for example, "PJL monitor")
+ </summary>
+	<value></value>
+	<remarks>
+ This member can be empty and is specified only for printers capable of bidirectional communication
+ </remarks>
+</member><member name="P:PrinterQueueWatch.PrinterDriver.DefaultDataType">
+	<summary>
+ The default data type used by this printer driver in writing spool files for print jobs
+ </summary>
+	<value></value>
+	<remarks>
+ This can be EMF or RAW.  The latter indicates that a printer control language 
+ (such as PCL or PostScript) is used.
+ </remarks>
+</member><member name="T:PrinterQueueWatch.PrinterDriver">
+ -----------------------------------------------------------------------------
+ Project	 : PrinterQueueWatch
+ Class	 : PrinterDriver
+ 
+ -----------------------------------------------------------------------------
+ <summary>
+ Specifies the settings for a printer driver
+ </summary>
+	<remarks>
+	</remarks>
+	<example>Lists all the printer drivers on the current server
+ <code>
+        Dim server As New PrintServer
+        Dim Driver As PrinterDriver
+        Me.ListBox1.Items.Clear()
+        For Each Driver In server.PrinterDrivers
+            Me.ListBox1.Items.Add(Driver.Name)
+        Next
+ </code>
+	</example>
+	<seealso cref="T:PrinterQueueWatch.PrinterDriver"/>
+</member><member name="P:PrinterQueueWatch.PrinterDriverCollection.Item(System.Int32)">
+	<summary>
+ The Item property returns a single <see cref="T:PrinterQueueWatch.PrinterDriver">printer driver</see> from this collection.
+ </summary>
+	<param name="index"></param>
+	<value></value>
+	<returns></returns>
+	<remarks></remarks>
+</member><member name="T:PrinterQueueWatch.PrinterDriverCollection">
+ -----------------------------------------------------------------------------
+ Project	 : PrinterQueueWatch
+ Class	 : PrinterDriverCollection
+ 
+ -----------------------------------------------------------------------------
+ <summary>
+ The collection of printer drivers on a server
+ </summary>
+	<remarks>
+	</remarks>
+	<example>Lists all the printer drivers on the current server
+ <code>
+        Dim server As New PrintServer
+        Dim Driver As PrinterDriver
+        Me.ListBox1.Items.Clear()
+        For Each Driver In server.PrinterDrivers
+            Me.ListBox1.Items.Add(Driver.Name)
+        Next
+ </code>
+	</example>
+</member>
+</members>
+</doc>

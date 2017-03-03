@@ -2,6 +2,7 @@
 using SnmpSharpNet;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -27,7 +28,11 @@ namespace WSPQ
 
         public void AddPrinter(string name, PrinterInformation printerInfo)
         {
-            watchedPrinters.Add(name, new WatchedPrinter(name, ShareToAddress(printerInfo.ShareName)));
+            if (!string.IsNullOrWhiteSpace(printerInfo.ServerName))
+            {
+                var printerPath = Path.Combine(printerInfo.ServerName, printerInfo.ShareName);
+                watchedPrinters.Add(printerInfo.ShareName, new WatchedPrinter(name, printerInfo.PortName));
+            }
         }
 
         public void Start()
@@ -97,6 +102,7 @@ namespace WSPQ
             WatchedPrinter printer;
             if (watchedPrinters.TryGetValue(job.PrinterName, out printer))
             {
+                return true;
                 return printer.AddAwaitingJob(job);
             }
             return false;
@@ -104,7 +110,8 @@ namespace WSPQ
 
         private string ShareToAddress(string shareName)
         {
-            return String.Format("{0}.{1}.{2}", shareName[1] == 'E' ? "148.60" : "129.20", shareName.Substring(2, 3).TrimStart('0'), shareName.Substring(5, 3).TrimStart('0'));
+            return shareName;
+            //return String.Format("{0}.{1}.{2}", shareName[1] == 'E' ? "148.60" : "129.20", shareName.Substring(2, 3).TrimStart('0'), shareName.Substring(5, 3).TrimStart('0'));
         }
     }
 
@@ -149,6 +156,13 @@ namespace WSPQ
         {
             KeyValuePair<int, PrintJob> kv = awaitingJobs.First();
             currentPrintJob = kv.Value;
+
+            if(currentPrintJob.Deleted || currentPrintJob.Deleting)
+            {
+                awaitingJobs.Remove(currentPrintJob.JobId);
+                return;
+            }
+
             currentPrintJob.Paused = false;
             runningJobId = kv.Key;
 

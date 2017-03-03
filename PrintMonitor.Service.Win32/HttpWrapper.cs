@@ -36,6 +36,9 @@ namespace WSPQ
 
         public bool CanPrint(string user, int pageCount)
         {
+            System.Threading.Thread.Sleep(3000);
+            return false;
+
             if (lastUser == user && lastPageCount == pageCount)
                 return lastResult;
             
